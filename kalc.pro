@@ -27,14 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     MODEL/colore.cpp \
-    MODEL/rgb.cpp \
-    VIEW/boh.cpp
+    VIEW/boh.cpp \
+    MODEL/rgbhex.cpp
 
 HEADERS += \
         mainwindow.h \
     MODEL/colore.h \
-    MODEL/rgb.h \
-    VIEW/boh.h
+    VIEW/boh.h \
+    MODEL/rgbhex.h
 
 FORMS += \
         mainwindow.ui
