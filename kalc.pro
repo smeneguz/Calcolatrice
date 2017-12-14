@@ -26,15 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    MODEL/colore.cpp \
     VIEW/boh.cpp \
-    MODEL/rgbhex.cpp
+    MODEL/rgbhex.cpp \
+    MODEL/color.cpp \
+    MODEL/space.cpp
 
 HEADERS += \
         mainwindow.h \
-    MODEL/colore.h \
     VIEW/boh.h \
-    MODEL/rgbhex.h
+    MODEL/rgbhex.h \
+    MODEL/color.h \
+    MODEL/space.h
 
 FORMS += \
         mainwindow.ui

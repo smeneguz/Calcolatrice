@@ -1,9 +1,12 @@
 #ifndef RGBHEX_H
 #define RGBHEX_H
 
-#include "colore.h"
+#include "color.h"
 
-class rgbHex : public Colore {
+class rgbHex : public Color {
+protected:
+    int color;
+    static const char c[];
 public:
     rgbHex();
     rgbHex(std::string c);
