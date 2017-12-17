@@ -4,7 +4,7 @@
 #include "color.h"
 
 class rgbHex : public Color {
-protected:
+private:
     int color;
     static const char c[];
 public:
