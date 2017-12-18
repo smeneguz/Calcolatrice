@@ -4,3 +4,5 @@ Space::Space()
 {
 
 }
+
+Space::~Space(){}

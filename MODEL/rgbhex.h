@@ -1,20 +1,28 @@
 #ifndef RGBHEX_H
 #define RGBHEX_H
-
+#include <math.h>
 #include "color.h"
-
-class rgbHex : public Color {
+/**
+ * @brief La classe RGBHex rappresenta i colori in formato esadecimale avendo in input una stringa o un intero
+ */
+class RGBHex : public Color{
 private:
     int color;
     static const char c[];
+    // Questa funione serve solo per pulire una stringa e mantenere solo i caratteri esadecimali
+    // Inoltre, posso scegliere tramite intero n quanti caratteri mantenere (a partire dal FONDO della stringa)
+    static std::string puliStringa(std::string s, int n=6);
+    // Questa funzione serve a convertire gli ultimi n caratteri di una stringa esadecimale in intero
+    static int valueOf(std::string c, int n);
 public:
-    rgbHex();
-    rgbHex(std::string c);
-    rgbHex(int r, int g, int b);
+
+    RGBHex();
+    RGBHex(std::string c);
+    RGBHex(int r, int g, int b);
 
     //metodi set e get
     void setColor(std::string c);
-    void setColorInt(int color);
+    void setColorInt(int c);
     std::string getColor() const;
     int getColorInt() const;
 
@@ -37,10 +45,14 @@ public:
     int getBint() const; // return x| 0<x<255
 
     // Overloading di operatori
-    rgbHex operator+(const rgbHex& x);
-    rgbHex operator-(const rgbHex& x);
-    rgbHex operator*(const rgbHex& x);
-    rgbHex operator/(const rgbHex& x);
+    RGBHex& operator+(const Color& x);
+    RGBHex& operator-(const Color& x);
+    RGBHex& operator*(const Color& x);
+    RGBHex& operator/(const Color& x);
+
+
+    //overrideng metodi virtuali ereditati
+    RGBHex* clone() const;
 
 
     /* DA IMPLEMENTARE

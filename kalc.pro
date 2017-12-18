@@ -29,14 +29,16 @@ SOURCES += \
     VIEW/boh.cpp \
     MODEL/rgbhex.cpp \
     MODEL/color.cpp \
-    MODEL/space.cpp
+    MODEL/space.cpp \
+    MODEL/object_1d.cpp
 
 HEADERS += \
         mainwindow.h \
     VIEW/boh.h \
     MODEL/rgbhex.h \
     MODEL/color.h \
-    MODEL/space.h
+    MODEL/space.h \
+    MODEL/object_1d.h
 
 FORMS += \
         mainwindow.ui
