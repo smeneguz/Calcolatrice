@@ -98,22 +98,140 @@ int RGBHex::getColorInt() const {
     return RGBHex::color;
 }
 
+////////////////////////////////////////////////
+/// \brief RGBHex::setRint
+/// \param r
+///
+void RGBHex::setRint(int r) {
+    int x = r;
+    if (x>255) x=255;
+    else if (x<0) x=0;
+    x=x*65536; // moltiplico x (valore fra 0 e 255) per 16^4, in questo modo il numero influirà solo sulla prima e seconda cifra hex
+    RGBHex::color = RGBHex::color%65536; // Rimuovo la prima e seconda cifre hex più significative
+    RGBHex::color += x;
+}
+
+///
+/// \brief RGBHex::setGint
+/// \param g
+///
+void RGBHex::setGint(int g) {
+    int x = g;
+    if (x>255) x=255;
+    else if (x<0) x=0;
+    x=x*256; // moltiplico x (valore fra 0 e 255) per 16^2, in questo modo il numero influirà solo sulla terza e quarta cifra hex
+    RGBHex::color = RGBHex::color-(RGBHex::color%65536)+(RGBHex::color%256); // Rimuovo la 3^ e 4^ cifre hex più significative
+    RGBHex::color += x;
+}
+
+///
+/// \brief RGBHex::setBint
+/// \param b
+///
+void RGBHex::setBint(int b) {
+    int x = b;
+    if (x>255) x=255;
+    else if (x<0) x=0;
+    RGBHex::color = RGBHex::color-(RGBHex::color%256); // Rimuovo la 5^ e 6^ cifre hex pi� significative
+    RGBHex::color += x;
+}
+
+// divido per 16^4 in modo da ottenere la prima e seonda cifra hex
+int RGBHex::getRint() const {
+    return RGBHex::color/65536;
+}
+
+// get G (terza e quarta)
+int RGBHex::getGint() const {
+    return (RGBHex::color%65536)/256;
+}
+
+// get B (quinta e sesta)
+int RGBHex::getBint() const {
+    return RGBHex::color%256;
+}
+
+////////////////////////////////////////////////////////////////
+// SET R G B////
+void RGBHex::setR(std::string r) {
+    (*this).RGBHex::setRint(valueOf(r,2));
+}
+
+void RGBHex::setG(std::string g) {
+     (*this).RGBHex::setGint(valueOf(g,2));
+}
+
+void RGBHex::setB(std::string b) {
+     (*this).RGBHex::setBint(valueOf(b,2));
+}
+
+// GET R G B ///
+std::string RGBHex::getR() const {
+    std::string output = "";
+    int x = RGBHex::color;
+    int y = x;
+    int div = 1048576;
+    for (int i=0; i<2; i++) {
+        y = x/div;
+        x = x%div;
+        output += RGBHex::c[y];
+        div = div/16;
+    }
+    return output;
+}
+
+std::string RGBHex::getG() const {
+    std::string output = "";
+    int x = RGBHex::color%65536;
+    int y = x;
+    int div = 4096;
+    for (int i=0; i<2; i++) {
+        y = x/div;
+        x = x%div;
+        output += RGBHex::c[y];
+        div = div/16;
+    }
+    return output;
+}
+
+std::string RGBHex::getB() const {
+    std::string output = "";
+    int x = RGBHex::color%256;
+    int y = x;
+    int div = 16;
+    for (int i=0; i<2; i++) {
+        y = x/div;
+        x = x%div;
+        output += RGBHex::c[y];
+        div = div/16;
+    }
+    return output;
+}
+
+
+//////////////////OVERLOADING OPERATORI //////
+/// \brief RGBHex::clone
+/// \return
+///
 RGBHex* RGBHex::clone() const{
     return new RGBHex(*this);
 }
 
-RGBHex& RGBHex::operator-(const Color& x) {
+//////////////////OVERLOADING OPERATORI //////
+//operatori di somma e sottrazione oparano sul colore in forma intera
+//mentre operatori di moltiplicazione e divisione fanno operazioni sui singoli elementi R G e B facendo sottrazioni o somme in base all'operazione
+RGBHex& RGBHex::operator-(const StrategyColor& x) {
     return *(clone());
 }
 
-RGBHex& RGBHex::operator+(const Color& x) {
+RGBHex& RGBHex::operator+(const StrategyColor& x) {
     return *(clone());
 }
 
-RGBHex& RGBHex::operator/(const Color& x) {
+RGBHex& RGBHex::operator/(const StrategyColor& x) {
     return *(clone());
 }
 
-RGBHex& RGBHex::operator*(const Color& x) {
+RGBHex& RGBHex::operator*(const StrategyColor& x) {
     return *(clone());
 }

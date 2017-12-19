@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  17 DEC 2017 14:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.5)  19 DEC 2017 13:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -999,8 +999,10 @@ thkerncmss.
 
 ] [12
 
+] [13
+
  </usr/share/texlive/texmf-dist/tex/latex/beamer/art/beamericonarticle.pdf>] [1
-3
+4
 
 ]
 \tf@nav=\write6
@@ -1012,26 +1014,26 @@ thkerncmss.
 \tf@snm=\write8
 \openout8 = `Relazione.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
 
 (./Relazione.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
 Package rerunfilecheck Info: File `Relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 263D307720953EF2ACC3DBC3B67AB706;164.
+(rerunfilecheck)             Checksum: 177A470ACE7472D374BF5038B2D1C029;213.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
  ) 
 Here is how much of TeX's memory you used:
- 17802 strings out of 493029
- 340908 string characters out of 6136235
- 414166 words of memory out of 5000000
- 20874 multiletter control sequences out of 15000+600000
+ 17811 strings out of 493029
+ 340989 string characters out of 6136235
+ 414376 words of memory out of 5000000
+ 20880 multiletter control sequences out of 15000+600000
  12833 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,69p,414b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1045,10 +1047,10 @@ ts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt10.pfb>
-Output written on Relazione.pdf (13 pages, 135236 bytes).
+Output written on Relazione.pdf (14 pages, 138526 bytes).
 PDF statistics:
- 487 PDF objects out of 1000 (max. 8388607)
- 441 compressed objects within 5 object streams
- 31 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 535 PDF objects out of 1000 (max. 8388607)
+ 488 compressed objects within 5 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 117 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -8,7 +8,7 @@
 class Space {
 private:
     int dpi; // risoluzione di stampa che sarà poi definita in modo opportuno nelle sottoclassi
-    RGBHex* col; // instanzio una classe colore
+    RGBHex* col; // puntatore ad una classe colore
 
 public:
     //space è una classe astratta e quindi l'utilizzo dei costruttori sarà utile solo per la costruzione del sottoogetto -> non ci sarà mai un'istanza di space

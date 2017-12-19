@@ -1,11 +1,11 @@
 #ifndef RGBHEX_H
 #define RGBHEX_H
 #include <math.h>
-#include "color.h"
+#include "strategycolor.h"
 /**
  * @brief La classe RGBHex rappresenta i colori in formato esadecimale avendo in input una stringa o un intero
  */
-class RGBHex : public Color{
+class RGBHex : public StrategyColor{
 private:
     int color;
     static const char c[];
@@ -45,10 +45,10 @@ public:
     int getBint() const; // return x| 0<x<255
 
     // Overloading di operatori
-    RGBHex& operator+(const Color& x);
-    RGBHex& operator-(const Color& x);
-    RGBHex& operator*(const Color& x);
-    RGBHex& operator/(const Color& x);
+    RGBHex& operator+(const StrategyColor& x);
+    RGBHex& operator-(const StrategyColor& x);
+    RGBHex& operator*(const StrategyColor& x);
+    RGBHex& operator/(const StrategyColor& x);
 
 
     //overrideng metodi virtuali ereditati

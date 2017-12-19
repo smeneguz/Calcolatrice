@@ -7,12 +7,12 @@
  */
 class Object_1D : public Space {
 private:
-    int length; //lunghezza in pixel (se la lunghezza è pari a 0 errore && e se 1 è un punto)
+    int length;//lunghezza in pixel ((se la lunghezza è pari a 0 solleva eccezione &&  se 1px è un punto) altrimenti è una linea)
 public:
     Object_1D();
     Object_1D(int l);
     Object_1D(int l, int risol);
-    Object_1D(int l, int risol, Color* c);
+    Object_1D(int l, int risol, StrategyColor* c);
 
     //conversioni lunghezza in cm e inch
     void setLungCm(double l);
