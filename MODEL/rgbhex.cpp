@@ -2,6 +2,24 @@
 
 const char RGBHex::c[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 
+
+//funzione che restituisce un intero partendo da una stringa esadecimale
+/*int RGBHex::HexToInt(std::string hex) const
+{
+    int result = 0;
+    for (int i=0; i<hex.length(); i++) {
+        if (hex[i]>=48 && hex[i]<=57)
+        {
+            result += (hex[i]-48)*pow(16,hex.length()-i-1);
+        } else if (hex[i]>=65 && hex[i]<=70) {
+            result += (hex[i]-55)*pow(16,hex.length( )-i-1);
+        } else if (hex[i]>=97 && hex[i]<=102) {
+            result += (hex[i]-87)*pow(16,hex.length()-i-1);
+        }
+    }
+    return result;
+}
+*/
 //costruttore vuoto
 RGBHex::RGBHex() {
     RGBHex::color = 0;
@@ -20,7 +38,7 @@ RGBHex::RGBHex() {
         if ((car.compare("9")<=0 && car.compare("0")>=0) ||
             (car.compare("f")<=0 && car.compare("a")>=0) ||
             (car.compare("F")<=0 && car.compare("A")>=0)) {
-            // Se il carattere � compreso fra 'a' e 'f' lo metto maiuscolo, sottraendo 32 posizioni della tabella ASCII
+            // Se il carattere è compreso fra 'a' e 'f' lo metto maiuscolo, sottraendo 32 posizioni della tabella ASCII
             if ((car.compare("f")<=0 && car.compare("a")>=0)) car = car[0]-32;
             input = ""+car+input;
         }
@@ -209,29 +227,63 @@ std::string RGBHex::getB() const {
 }
 
 
-//////////////////OVERLOADING OPERATORI //////
-/// \brief RGBHex::clone
-/// \return
-///
-RGBHex* RGBHex::clone() const{
-    return new RGBHex(*this);
-}
 
 //////////////////OVERLOADING OPERATORI //////
 //operatori di somma e sottrazione oparano sul colore in forma intera
 //mentre operatori di moltiplicazione e divisione fanno operazioni sui singoli elementi R G e B facendo sottrazioni o somme in base all'operazione
-RGBHex& RGBHex::operator-(const StrategyColor& x) {
-    return *(clone());
+RGBHex RGBHex::operator-(const RGBHex& x){
+    RGBHex aux;
+    int result = RGBHex::color - x.RGBHex::getColorInt();
+    if (result<0) result = -(result); // abs(result)
+    if (result>16777215) aux.setColorInt(16777215);
+    else aux.setColorInt(result);
+    return aux;
+
 }
 
-RGBHex& RGBHex::operator+(const StrategyColor& x) {
-    return *(clone());
+RGBHex RGBHex::operator+(const RGBHex& x) {
+    RGBHex aux;
+    int result = RGBHex::color + x.RGBHex::getColorInt();
+    if (result>16777215) aux.setColorInt(16777215);
+    else if (result<0) aux.setColorInt(0);
+    else aux.setColorInt(result);
+    return aux;
 }
 
-RGBHex& RGBHex::operator/(const StrategyColor& x) {
-    return *(clone());
+RGBHex RGBHex::operator/(const RGBHex& x) {
+    int r = this->getRint() - x.getRint();
+    if (r<0) r = 0;
+    if (r>255) r=255;
+    int g = this->getGint() - x.getGint();
+    if (g<0) g = 0;
+    if (g>255) g=255;
+    int b = this->getBint() - x.getBint();
+    if (b<0) b = 0;
+    if (b>255) b=255;
+    RGBHex aux = RGBHex(r,g,b);
+    return aux;
 }
+/*
+RGBHex& RGBHex::somma(const StrategyColor& x){
+    //sono qua e quinidi sia this che x sono entrambi RGBHex
+    int result = RGBHex::color + x.getColorInt();
+    if (result>16777215) x.setColorInt(16777215);
+    else if (result<0) x.setColorInt(0);
+    else x.setColorInt(result);
+    return x;
+}
+*/
 
-RGBHex& RGBHex::operator*(const StrategyColor& x) {
-    return *(clone());
+RGBHex RGBHex::operator*(const RGBHex& x) {
+    int r = this->getRint() + x.getRint();
+    if (r<0) r = 0;
+    if (r>255) r=255;
+    int g = this->getGint() + x.getGint();
+    if (g<0) g = 0;
+    if (g>255) g=255;
+    int b = this->getBint() + x.getBint();
+    if (b<0) b = 0;
+    if (b>255) b=255;
+    RGBHex aux = RGBHex(r,g,b);
+    return aux;
 }

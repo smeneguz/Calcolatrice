@@ -13,20 +13,34 @@ public:
 
     Object_2d();
     Object_2d(int l);
-    Object_2d(int l, int risol);
-    Object_2d(int risol, StrategyColor* c, int l, int h);
+    Object_2d(int l, int h);
+    Object_2d(int l, int h, int risol);
+    Object_2d(int l, int h, int risol, RGBHex c);
 
-    //conversioni lunghezza in cm e inch
-    void setLungCm(double l);
-    double getLungCm() const;
-    void setLungInch(double l);
-    double getLungInch() const;
-
+    //metodi get set campi dati
+    int getLength() const;
+    void setLength(int l);
     // Overloading di operatori
     Object_2d operator+(const Object_2d& x);
     Object_2d operator-(const Object_2d& x);
     Object_2d operator*(const Object_2d& x);
     Object_2d operator/(const Object_2d& x);
+    //Operator Oggetto 2 dimensioni con colore
+    Object_2d& operator+(const RGBHex& x);
+    Object_2d& operator-(const RGBHex& x);
+    Object_2d& operator*(const RGBHex& x);
+    Object_2d& operator/(const RGBHex& x);
+    //EREDITO QUESTI DALLA BASE VIRTUALI PURI
+    //OVERRIDING
+    //opertor di un oggetto a due dimensioni con un possibili oggetti a più dimensioni
+    Object_2d& operator+(const Space& x) const; //solleva eccezione non si può fare somma tra oggetti dimensionali diversi
+    Object_2d& operator-(const Space& x) const; //solleva eccezione non si può fare sottrazioni tra oggetti dimensionali diversi
+
+    //conversioni lunghezza in cm e inch
+    void setLCm(double l);
+    double getLCm() const;
+    void setLInch(double l);
+    double getLInch() const;
 
 };
 

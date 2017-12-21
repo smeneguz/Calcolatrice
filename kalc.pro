@@ -30,8 +30,8 @@ SOURCES += \
     MODEL/rgbhex.cpp \
     MODEL/space.cpp \
     MODEL/object_1d.cpp \
-    MODEL/strategycolor.cpp \
-    MODEL/object_2d.cpp
+    MODEL/object_2d.cpp \
+    MODEL/object_3d.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,8 +39,8 @@ HEADERS += \
     MODEL/rgbhex.h \
     MODEL/space.h \
     MODEL/object_1d.h \
-    MODEL/strategycolor.h \
-    MODEL/object_2d.h
+    MODEL/object_2d.h \
+    MODEL/object_3d.h
 
 FORMS += \
         mainwindow.ui

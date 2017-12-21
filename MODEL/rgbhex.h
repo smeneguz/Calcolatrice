@@ -1,11 +1,11 @@
 #ifndef RGBHEX_H
 #define RGBHEX_H
 #include <math.h>
-#include "strategycolor.h"
+#include<iostream>
 /**
  * @brief La classe RGBHex rappresenta i colori in formato esadecimale avendo in input una stringa o un intero
  */
-class RGBHex : public StrategyColor{
+class RGBHex {
 private:
     int color;
     static const char c[];
@@ -19,6 +19,7 @@ public:
     RGBHex();
     RGBHex(std::string c);
     RGBHex(int r, int g, int b);
+    //virtual ~RGBHex(); non devo metterlo perchè fa la distruzione di default di un primitivo int
 
     //metodi set e get
     void setColor(std::string c);
@@ -45,22 +46,11 @@ public:
     int getBint() const; // return x| 0<x<255
 
     // Overloading di operatori
-    RGBHex& operator+(const StrategyColor& x);
-    RGBHex& operator-(const StrategyColor& x);
-    RGBHex& operator*(const StrategyColor& x);
-    RGBHex& operator/(const StrategyColor& x);
+    RGBHex operator+(const RGBHex& x);
+    RGBHex operator-(const RGBHex& x);
+    RGBHex operator*(const RGBHex& x);
+    RGBHex operator/(const RGBHex& x);
 
-
-    //overrideng metodi virtuali ereditati
-    RGBHex* clone() const;
-
-
-    /* DA IMPLEMENTARE
-     * virtual std::string getHex() const = 0;
-     * virtual ~Colore()=0;
-     * virtual Colore* clone() const =0;
-     *
-     */
 
 };
 

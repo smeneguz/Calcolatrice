@@ -11,20 +11,26 @@ private:
 public:
     Object_1D();
     Object_1D(int l);
-    Object_1D(int l, int risol);
-    Object_1D(int l, int risol, StrategyColor* c);
+    Object_1D(int risol, int l);
+    Object_1D(int risol, int l, RGBHex c);
 
-    //conversioni lunghezza in cm e inch
-    void setLungCm(double l);
-    double getLungCm() const;
-    void setLungInch(double l);
-    double getLungInch() const;
-
-    // Overloading di operatori
+    int getLength() const;
+    void setLength(int l);
+    // Overloading di operatori (oggetto a una dimensione + - * / oggetto a una dimensione)
     Object_1D operator+(const Object_1D& x);
     Object_1D operator-(const Object_1D& x);
     Object_1D operator*(const Object_1D& x);
     Object_1D operator/(const Object_1D& x);
+    //Overloading di overriding (oggetto una dimensione + - * / colore)
+    Object_1D& operator+(const RGBHex& x);
+    Object_1D& operator-(const RGBHex& x);
+    Object_1D& operator*(const RGBHex& x);
+    Object_1D& operator/(const RGBHex& x);
+    //conversioni lunghezza in cm e inch
+    void setLCm(double l);
+    double getLCm() const;
+    void setLInch(double l);
+    double getLInch() const;
 
 };
 
