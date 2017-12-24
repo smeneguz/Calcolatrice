@@ -2,12 +2,13 @@
 #define SPACE_H
 #include <iostream>
 #include "rgbhex.h"
+#include "exceptions.h"
 
 /**
  * @brief La classe astratta Space rappresenta il concetto di spazi dimenensionali di Oggetti, i quali poi hanno una risoluzione di stampa e un colore
  */
 class Space {
-private:
+protected:
     int dpi; // risoluzione di stampa che sarà poi definita in modo opportuno nelle sottoclassi
     RGBHex col; // puntatore ad una classe colore
 
@@ -24,6 +25,7 @@ public:
     void setColor(RGBHex c);
     RGBHex getColor() const;
 
+    virtual int CalcolaSuperficie() = 0;
     //guardare se è necessario fare anxhe operatori tra Space e Space
 
 

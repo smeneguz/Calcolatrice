@@ -40,7 +40,8 @@ HEADERS += \
     MODEL/space.h \
     MODEL/object_1d.h \
     MODEL/object_2d.h \
-    MODEL/object_3d.h
+    MODEL/object_3d.h \
+    MODEL/exceptions.h
 
 FORMS += \
         mainwindow.ui
