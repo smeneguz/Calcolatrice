@@ -28,7 +28,6 @@ public:
     virtual int CalcolaSuperficie() = 0;
     //guardare se è necessario fare anxhe operatori tra Space e Space
 
-
     // metodi space + - * / colore
     virtual Space& operator+(const RGBHex& x) = 0;
     virtual Space& operator-(const RGBHex& x) = 0;

@@ -13,20 +13,25 @@ public:
     Object_1D(int l);
     Object_1D(int risol, int l);
     Object_1D(int risol, RGBHex c, int l);
+
     virtual int CalcolaSuperficie();
 
+    //set e get
     int getLength() const;
     void setLength(int l);
+
     // Overloading di operatori (oggetto a una dimensione + - * / oggetto a una dimensione)
     Object_1D& operator+(const Space& x);
     Object_1D& operator-(const Space& x);
     Object_1D& operator*(const Space& x);
     Object_1D& operator/(const Space& x);
+
     //Overloading di overriding (oggetto una dimensione + - * / colore)
     Object_1D& operator+(const RGBHex& x);
     Object_1D& operator-(const RGBHex& x);
     Object_1D& operator*(const RGBHex& x);
     Object_1D& operator/(const RGBHex& x);
+
     //conversioni lunghezza in cm e inch
     void setLCm(double l);
     double getLCm() const;

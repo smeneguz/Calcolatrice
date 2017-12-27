@@ -75,6 +75,7 @@ Object_1D& Object_1D::operator/(const Space &x)
     if(a)
     {
         int val = this->getLength() / a->getLength();
+        if(val <=0) val = 1;
         this->setLength(val);
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
