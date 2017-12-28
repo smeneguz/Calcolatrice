@@ -3,7 +3,7 @@
 #include <iostream>
 #include "rgbhex.h"
 #include "exceptions.h"
-
+#include "status.h"
 /**
  * @brief La classe astratta Space rappresenta il concetto di spazi dimenensionali di Oggetti, i quali poi hanno una risoluzione di stampa e un colore
  */
@@ -13,6 +13,8 @@ protected:
     RGBHex col; // puntatore ad una classe colore
 
 public:
+    virtual int getLength() const = 0;
+
     //space è una classe astratta e quindi l'utilizzo dei costruttori sarà utile solo per la costruzione del sottoogetto -> non ci sarà mai un'istanza di space
     virtual ~Space();
     Space();
@@ -24,6 +26,9 @@ public:
     int getRisoluzione() const;
     void setColor(RGBHex c);
     RGBHex getColor() const;
+
+    //informazioni
+    virtual Status getStatus() const;
 
     virtual int CalcolaSuperficie() = 0;
     //guardare se è necessario fare anxhe operatori tra Space e Space

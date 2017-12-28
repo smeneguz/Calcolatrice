@@ -18,6 +18,7 @@ public:
     Object_2d(int l, int h, int risol, RGBHex c);
 
     virtual int CalcolaSuperficie();
+    virtual Status getStatus() const;
 
     //metodi get set campi dati
     int getLength() const;

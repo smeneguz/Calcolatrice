@@ -20,6 +20,22 @@ int Object_3d::CalcolaSuperficie()
     return getLength()*getHeight()*getDepth();
 }
 
+Status Object_3d::getStatus() const
+{
+    Status s = Space::getStatus();
+    //sistemare lunghezza e altezza e profondità
+    s.l = this->getLength();
+    s.lCm = this->getLCm();
+    s.lInch = this->getLInch();
+    s.h = this->getHeight();
+    s.hCm = this->getHCm();
+    s.hInch = this->getHInch();
+    s.d = this->getDepth();
+    s.dCm = this->getDCm();
+    s.dInch = this->getDInch();
+    return s;
+}
+
 int Object_3d::getLength() const
 {
     return length;

@@ -4,13 +4,23 @@ Object_1D::Object_1D() : Space(), length(1) {}
 
 Object_1D::Object_1D(int l) : Space(), length(l) {}
 
-Object_1D::Object_1D(int risol, int l) : Space(risol), length(l) {}
+Object_1D::Object_1D(int l, int risol) : Space(risol), length(l) {}
 
-Object_1D::Object_1D(int risol, RGBHex c, int l) : Space(risol, c), length(l) {}
+Object_1D::Object_1D(int l, int risol, RGBHex c) : Space(risol, c), length(l) {}
 
 int Object_1D::CalcolaSuperficie()
 {
     return 0; //poichè un punto o una linea non possegono superficie
+}
+
+Status Object_1D::getStatus() const
+{
+    Status s = Space::getStatus();
+    //sistemare lunghezza
+    s.l = this->getLength();
+    s.lCm = this->getLCm();
+    s.lInch = this->getLInch();
+    return s;
 }
 
 int Object_1D::getLength() const

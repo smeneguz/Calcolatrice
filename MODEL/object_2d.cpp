@@ -17,6 +17,19 @@ int Object_2d::CalcolaSuperficie()
     return getLength()*getHeight();
 }
 
+Status Object_2d::getStatus() const
+{
+    Status s = Space::getStatus();
+    //sistemare lunghezza e altezza
+    s.l = this->getLength();
+    s.lCm = this->getLCm();
+    s.lInch = this->getLInch();
+    s.h = this->getHeight();
+    s.hCm = this->getHCm();
+    s.hInch = this->getHInch();
+    return s;
+}
+
 int Object_2d::getLength() const
 {
     return length;

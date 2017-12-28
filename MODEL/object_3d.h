@@ -17,6 +17,7 @@ public:
     Object_3d(int l, int h, int d, int risol, RGBHex c);
 
     virtual int CalcolaSuperficie();
+    virtual Status getStatus() const;
 
     //metodi get set campi dati
     int getLength() const;

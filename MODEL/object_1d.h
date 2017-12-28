@@ -11,10 +11,11 @@ private:
 public:
     Object_1D();
     Object_1D(int l);
-    Object_1D(int risol, int l);
-    Object_1D(int risol, RGBHex c, int l);
+    Object_1D( int l, int risol);
+    Object_1D( int l, int risol, RGBHex c);
 
     virtual int CalcolaSuperficie();
+    virtual Status getStatus() const;
 
     //set e get
     int getLength() const;

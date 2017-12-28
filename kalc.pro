@@ -31,7 +31,9 @@ SOURCES += \
     MODEL/space.cpp \
     MODEL/object_1d.cpp \
     MODEL/object_2d.cpp \
-    MODEL/object_3d.cpp
+    MODEL/object_3d.cpp \
+    MODEL/businesslogic.cpp \
+    MODEL/status.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +43,9 @@ HEADERS += \
     MODEL/object_1d.h \
     MODEL/object_2d.h \
     MODEL/object_3d.h \
-    MODEL/exceptions.h
+    MODEL/exceptions.h \
+    MODEL/businesslogic.h \
+    MODEL/status.h
 
 FORMS += \
         mainwindow.ui
