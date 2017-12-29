@@ -2,10 +2,11 @@
 #define RGBHEX_H
 #include <math.h>
 #include<iostream>
+#include "object.h"
 /**
  * @brief La classe RGBHex rappresenta i colori in formato esadecimale avendo in input una stringa o un intero
  */
-class RGBHex {
+class RGBHex : public Object{
 private:
     int color;
     static const char c[];
@@ -27,8 +28,6 @@ public:
     std::string getColor() const;
     int getColorInt() const;
 
-    //serve metodo per getinfo da
-
     //set rgb versione string
     void setR(std::string r);
     void setG(std::string g);
@@ -44,6 +43,8 @@ public:
     int getRint() const; // return x| 0<x<255
     int getGint() const; // return x| 0<x<255
     int getBint() const; // return x| 0<x<255
+    virtual Status getStatus() const;
+
 
     // Overloading di operatori
     RGBHex operator+(const RGBHex& x);

@@ -169,6 +169,13 @@ int RGBHex::getBint() const {
     return RGBHex::color%256;
 }
 
+Status RGBHex::getStatus() const
+{
+    Status s = Status();
+    s.color = this->getColor();
+    return s;
+}
+
 ////////////////////////////////////////////////////////////////
 // SET R G B////
 void RGBHex::setR(std::string r) {
