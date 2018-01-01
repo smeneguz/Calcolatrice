@@ -3,24 +3,24 @@
 #include "object_1d.h"
 
 
-Object_3d::Object_3d() : Space(), length(1) ,height(1), depth(1) {}
+Object_3D::Object_3D() : Space(), length(1) ,height(1), depth(1) {}
 
-Object_3d::Object_3d(int l) : Space(), length(l), height(1), depth(1) {}
+Object_3D::Object_3D(int l) : Space(), length(l), height(1), depth(1) {}
 
-Object_3d::Object_3d(int l, int h) : Space(), length(l), height(h), depth(1) {}
+Object_3D::Object_3D(int l, int h) : Space(), length(l), height(h), depth(1) {}
 
-Object_3d::Object_3d(int l, int h, int d) : Space(), length(l), height(h), depth(d) {}
+Object_3D::Object_3D(int l, int h, int d) : Space(), length(l), height(h), depth(d) {}
 
-Object_3d::Object_3d(int l, int h, int d, int risol) : Space(risol), length(l), height(h), depth(d) {}
+Object_3D::Object_3D(int l, int h, int d, int risol) : Space(risol), length(l), height(h), depth(d) {}
 
-Object_3d::Object_3d(int l, int h, int d, int risol, RGBHex c) : Space(risol, c), length(l), height(h), depth(d) {}
+Object_3D::Object_3D(int l, int h, int d, int risol, RGBHex c) : Space(risol, c), length(l), height(h), depth(d) {}
 
-int Object_3d::CalcolaSuperficie()
+int Object_3D::CalcolaSuperficie()
 {
     return getLength()*getHeight()*getDepth();
 }
 
-Status Object_3d::getStatus() const
+Status Object_3D::getStatus() const
 {
     Status s = Space::getStatus();
     //sistemare lunghezza e altezza e profondità
@@ -36,39 +36,39 @@ Status Object_3d::getStatus() const
     return s;
 }
 
-int Object_3d::getLength() const
+int Object_3D::getLength() const
 {
     return length;
 }
 
-void Object_3d::setLength(int l)
+void Object_3D::setLength(int l)
 {
     length=l;
 }
 
-int Object_3d::getHeight() const
+int Object_3D::getHeight() const
 {
     return height;
 }
 
-void Object_3d::setHeight(int h)
+void Object_3D::setHeight(int h)
 {
     height=h;
 }
 
-int Object_3d::getDepth() const
+int Object_3D::getDepth() const
 {
     return depth;
 }
 
-void Object_3d::setDepth(int d)
+void Object_3D::setDepth(int d)
 {
     depth=d;
 }
 
-Object_3d &Object_3d::operator+(const Space &x)
+Object_3D &Object_3D::operator+(const Space &x)
 {
-    const Object_3d* a= dynamic_cast<const Object_3d*>(&x);
+    const Object_3D* a= dynamic_cast<const Object_3D*>(&x);
     if(a)
     {
         int val = this->getLength() + a->getLength();
@@ -85,9 +85,9 @@ Object_3d &Object_3d::operator+(const Space &x)
         throw Ecc_Object3D_somma_ObjectDiverso();
 }
 
-Object_3d &Object_3d::operator-(const Space &x)
+Object_3D &Object_3D::operator-(const Space &x)
 {
-    const Object_3d* a= dynamic_cast<const Object_3d*>(&x);
+    const Object_3D* a= dynamic_cast<const Object_3D*>(&x);
     if(a)
     {
         int val = this->getLength() - a->getLength();
@@ -107,9 +107,9 @@ Object_3d &Object_3d::operator-(const Space &x)
         throw Ecc_Object3D_sottrazione_ObjectDiverso();
 }
 
-Object_3d &Object_3d::operator*(const Space &x)
+Object_3D &Object_3D::operator*(const Space &x)
 {
-    const Object_3d* a= dynamic_cast<const Object_3d*>(&x);
+    const Object_3D* a= dynamic_cast<const Object_3D*>(&x);
     if(a)
     {
         int val = this->getLength() * a->getLength();
@@ -121,7 +121,7 @@ Object_3d &Object_3d::operator*(const Space &x)
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
-    const Object_2d* b = dynamic_cast<const Object_2d*>(&x);
+    const Object_2D* b = dynamic_cast<const Object_2D*>(&x);
     if(b)
     {
         int val = this->getLength() * b->getLength();
@@ -142,9 +142,9 @@ Object_3d &Object_3d::operator*(const Space &x)
     throw Ecc_Object3D_moltiplicazione_ObjectDiverso();
 }
 
-Object_3d &Object_3d::operator/(const Space &x)
+Object_3D &Object_3D::operator/(const Space &x)
 {
-    const Object_3d* a= dynamic_cast<const Object_3d*>(&x);
+    const Object_3D* a= dynamic_cast<const Object_3D*>(&x);
     if(a)
     {
         int val = this->getLength() / a->getLength();
@@ -159,7 +159,7 @@ Object_3d &Object_3d::operator/(const Space &x)
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
-    const Object_2d* b = dynamic_cast<const Object_2d*>(&x);
+    const Object_2D* b = dynamic_cast<const Object_2D*>(&x);
     if(b)
     {
         int val = this->getLength() / b->getLength();
@@ -183,7 +183,7 @@ Object_3d &Object_3d::operator/(const Space &x)
     throw Ecc_Object3D_divisione_ObjectDiverso();
 }
 
-Object_3d &Object_3d::operator+(const RGBHex &x)
+Object_3D &Object_3D::operator+(const RGBHex &x)
 {
     RGBHex b;
     int val = x.getColorInt() + this->col.getColorInt();
@@ -193,7 +193,7 @@ Object_3d &Object_3d::operator+(const RGBHex &x)
     return *this;
 }
 
-Object_3d &Object_3d::operator-(const RGBHex &x)
+Object_3D &Object_3D::operator-(const RGBHex &x)
 {
     RGBHex b;
     int val = col.getColorInt() - x.getColorInt();
@@ -203,90 +203,90 @@ Object_3d &Object_3d::operator-(const RGBHex &x)
     return *this;
 }
 
-Object_3d &Object_3d::operator*(const RGBHex &x)
+Object_3D &Object_3D::operator*(const RGBHex &x)
 {
     this->setColor(x);
     return *this;
 }
 
-Object_3d &Object_3d::operator/(const RGBHex &x)
+Object_3D &Object_3D::operator/(const RGBHex &x)
 {
     col.getColorInt() == x.getColorInt() ? this->setColor(RGBHex("000000")) : this->setColor(col);
     return *this;
 }
 
-void Object_3d::setLCm(double l)
+void Object_3D::setLCm(double l)
 {
     length = static_cast<int> (Space::dpi*(l/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
     if ((Space::dpi*(l/2.54))-length > 0) length++; // Arrotondo per eccesso
 }
 
-double Object_3d::getLCm() const
+double Object_3D::getLCm() const
 {
     double a = static_cast<double>(length);
     double b = static_cast<double>(Space::dpi);
     return ((a/b)*2.54);
 }
 
-void Object_3d::setLInch(double l)
+void Object_3D::setLInch(double l)
 {
     length = static_cast<int> (Space::dpi*l);
     if ((Space::dpi*l)-length > 0) length++; // Arrotondo per eccesso
 }
 
-double Object_3d::getLInch() const
+double Object_3D::getLInch() const
 {
     double a = static_cast<double>(length);
     double b = static_cast<double>(length);
     return (a/b);
 }
 
-void Object_3d::setHCm(double h)
+void Object_3D::setHCm(double h)
 {
     height = static_cast<int> (Space::dpi*(h/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
     if ((Space::dpi*(h/2.54))-height > 0) height++; // Arrotondo per eccesso
 }
 
-double Object_3d::getHCm() const
+double Object_3D::getHCm() const
 {
     double a = static_cast<double>(height);
     double b = static_cast<double>(Space::dpi);
     return ((a/b)*2.54);
 }
 
-void Object_3d::setHInch(double h)
+void Object_3D::setHInch(double h)
 {
     height = static_cast<int> (Space::dpi*h);
     if ((Space::dpi*h)-height > 0) height++; // Arrotondo per eccesso
 }
 
-double Object_3d::getHInch() const
+double Object_3D::getHInch() const
 {
     double a = static_cast<double>(height);
     double b = static_cast<double>(height);
     return (a/b);
 }
 
-void Object_3d::setDCm(double d)
+void Object_3D::setDCm(double d)
 {
     depth = static_cast<int> (Space::dpi*(d/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
     if ((Space::dpi*(d/2.54))-depth > 0) depth++; // Arrotondo per eccesso
 }
 
-double Object_3d::getDCm() const
+double Object_3D::getDCm() const
 {
     double a = static_cast<double>(depth);
     double b = static_cast<double>(Space::dpi);
     return ((a/b)*2.54);
 }
 
-void Object_3d::setDInch(double d)
+void Object_3D::setDInch(double d)
 {
     depth = static_cast<int> (Space::dpi*d);
     if ((Space::dpi*d)-depth > 0) depth++; // Arrotondo per eccesso
 }
 
-double Object_3d::getDInch() const
+double Object_3D::getDInch() const
 {
     double a = static_cast<double>(depth);
     double b = static_cast<double>(depth);

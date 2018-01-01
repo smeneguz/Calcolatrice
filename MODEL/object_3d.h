@@ -2,19 +2,19 @@
 #define OBJECT_3D_H
 #include "space.h"
 
-class Object_3d : public Space{
+class Object_3D : public Space{
 private:
     int length; //lunghezza in pixel
     int height; // altezza in pixel
     int depth; //profondità in pixel
     //nel caso in cui uno dei due campi venga istanziato a 0 si solleva un eccezzione, nel caso uno dei due sia 1 allora viene visto come oggetto a una dimension
 public:
-    Object_3d();
-    Object_3d(int l);
-    Object_3d(int l, int h);
-    Object_3d(int l, int h, int d);
-    Object_3d(int l, int h, int d, int risol);
-    Object_3d(int l, int h, int d, int risol, RGBHex c);
+    Object_3D();
+    Object_3D(int l);
+    Object_3D(int l, int h);
+    Object_3D(int l, int h, int d);
+    Object_3D(int l, int h, int d, int risol);
+    Object_3D(int l, int h, int d, int risol, RGBHex c);
 
     virtual int CalcolaSuperficie();
     virtual Status getStatus() const;
@@ -28,16 +28,16 @@ public:
     void setDepth(int d);
 
     // Overloading di operatori
-    Object_3d& operator+(const Space& x);
-    Object_3d& operator-(const Space& x);
-    Object_3d& operator*(const Space& x);
-    Object_3d& operator/(const Space& x);
+    Object_3D& operator+(const Space& x);
+    Object_3D& operator-(const Space& x);
+    Object_3D& operator*(const Space& x);
+    Object_3D& operator/(const Space& x);
 
     //Operator Oggetto 2 dimensioni con colore
-    Object_3d& operator+(const RGBHex& x);
-    Object_3d& operator-(const RGBHex& x);
-    Object_3d& operator*(const RGBHex& x);
-    Object_3d& operator/(const RGBHex& x);
+    Object_3D& operator+(const RGBHex& x);
+    Object_3D& operator-(const RGBHex& x);
+    Object_3D& operator*(const RGBHex& x);
+    Object_3D& operator/(const RGBHex& x);
 
     //conversioni lunghezza && altezza && profondità in cm e inch
     void setLCm(double l);

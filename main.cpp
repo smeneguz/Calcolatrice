@@ -1,10 +1,8 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include "MODEL/space.h"
+#include "MODEL/businesslogic.h"
 #include<iostream>
-#include "MODEL/object_1d.h"
-#include"MODEL/object_2d.h"
-#include"MODEL/object_3d.h"
+
 
 
 int main(int argc, char *argv[])
@@ -16,15 +14,28 @@ int main(int argc, char *argv[])
 
     std::cout << b->getColor();
     //devo usare la classe business logic
-    Space* k = new Object_1D();
+    Object* k = new Object_1D();
     Space* l = new Object_1D(4);
-    Space* f = &(*(k) + *(l));//non da errori (somma tra oggetti puntati e poi riferimento a quell'oggetto)
-    std::cout << f->getLength();
-    //std::cout << l->getLength();
-    //oggetti diversi
-    Space* j = new Object_2d(4,6);
-    Space* u = &(*(k) + *(j));
-    std::cout << u->getLength();
+
+    Space* j = new Object_2D(4,6);
+    //Space* u = &(*(k) + *(j));
+    //std::cout << u->getLength();
+    std::cout << 1;
+    ////USANDO BUSINESS
+    BusinessLogic bu = BusinessLogic();
+    std::cout << 2;
+
+    RGBHex r2 = RGBHex("0005AA");
+    Object * op1 = j;
+    Object* op2 = b;
+    std::cout << 3;
+
+    bu.setOp1(op1);
+    bu.setOp2(op2);
+    bu.setOperator(1);
+    bu.esegui();
+    //Status s1 = bu.getRisultato()->getStatus();
+    //std::cout << s1.color << "  "<<s1.d << "   "<< s1.l;
 
 
     return a.exec();

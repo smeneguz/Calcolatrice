@@ -40,13 +40,13 @@ void BusinessLogic::newObj1D(int l, int r)
 
 void BusinessLogic::newObj2D(int l, int h, int r)
 {
-    Object_2d* o2 = new Object_2d(l, h, r);
+    Object_2D* o2 = new Object_2D(l, h, r);
     bidimensionale.push_back(o2);
 }
 
 void BusinessLogic::newObj3D(int l, int h, int d, int r)
 {
-    Object_3d* o3 = new Object_3d(l, h, d, r);
+    Object_3D* o3 = new Object_3D(l, h, d, r);
     tridimensionale.push_back(o3);
 }
 
@@ -69,10 +69,10 @@ Object_1D *BusinessLogic::getObj1D(int index)
     return o;
 }
 
-Object_2d *BusinessLogic::getObj2D(int index)
+Object_2D *BusinessLogic::getObj2D(int index)
 {
-    Object_2d* o;
-    std::vector<Object_2d*>::iterator it = bidimensionale.begin();
+    Object_2D* o;
+    std::vector<Object_2D*>::iterator it = bidimensionale.begin();
     bool trovato = false;
     for(int x=0; it < bidimensionale.end() && !trovato; x++, it++)
         if(x==index) {
@@ -82,10 +82,10 @@ Object_2d *BusinessLogic::getObj2D(int index)
     return o;
 }
 
-Object_3d *BusinessLogic::getObj3D(int index)
+Object_3D *BusinessLogic::getObj3D(int index)
 {
-    Object_3d* o;
-    std::vector<Object_3d*>::iterator it = tridimensionale.begin();
+    Object_3D* o;
+    std::vector<Object_3D*>::iterator it = tridimensionale.begin();
     bool trovato = false;
     for(int x=0; it < tridimensionale.end() && !trovato; x++, it++)
         if(x==index) {
@@ -143,14 +143,283 @@ void BusinessLogic::esegui()
     if(op1 && op2 && (operatore>=0)){ //verifico che siano stati inseriti i 2 dati su cui fare le operazioni e che l'operatore sia stato selezionato
     Object_1D* o11d = dynamic_cast<Object_1D*>(op1);
     Object_1D* o21d = dynamic_cast<Object_1D*>(op2);
-    Object_2d* o12d = dynamic_cast<Object_2d*>(op1);
-    Object_2d* o22d = dynamic_cast<Object_2d*>(op2);
-    Object_3d* o13d = dynamic_cast<Object_3d*>(op1);
-    Object_3d* o23d = dynamic_cast<Object_3d*>(op2);
+    Object_2D* o12d = dynamic_cast<Object_2D*>(op1);
+    Object_2D* o22d = dynamic_cast<Object_2D*>(op2);
+    Object_3D* o13d = dynamic_cast<Object_3D*>(op1);
+    Object_3D* o23d = dynamic_cast<Object_3D*>(op2);
     RGBHex* c1 = dynamic_cast<RGBHex*>(op1);
     RGBHex* c2 = dynamic_cast<RGBHex*>(op2);
     //adesso guardo tutti i casi, possibilità per ogni tipo che può essere op1 e op2
 
+    if(o11d && c2){ // Obj1D op1   ?operatore?   RGBhex op2
+        if(operatore==0){ //somma
+            risultato1D = *o11d + *c1;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato1D = *o11d - *c1;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato1D = *o11d * *c1;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato1D = *o11d / *c1;
+            risultato = &risultato1D;
+        }
+    }
+
+    if(o11d && o21d){ //Obj1D op1   ?operatore?   Obj1D op2
+        if(operatore==0){ //somma
+            risultato1D = *o11d + *o21d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato1D = *o11d - *o21d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato1D = *o11d * *o21d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato1D = *o11d / *o21d;
+            risultato = &risultato1D;
+        }
+    }
+
+    if(o11d && o22d){ //Obj1D op1   ?operatore?   Obj2D op2
+        if(operatore==0){ //somma
+            risultato1D = *o11d + *o22d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato1D = *o11d - *o22d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato1D = *o11d * *o22d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato1D = *o11d / *o22d;
+            risultato = &risultato1D;
+        }
+    }
+
+    if(o11d && o23d){ //Obj1D op1   ?operatore?   Obj3D op2
+        if(operatore==0){ //somma
+            risultato1D = *o11d + *o23d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato1D = *o11d - *o23d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato1D = *o11d * *o23d;
+            risultato = &risultato1D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato1D = *o11d / *o23d;
+            risultato = &risultato1D;
+        }
+    }
+
+    ////FINE 1D
+
+    if(o12d && c2){ // Obj2D op1   ?operatore?   RGBhex op2
+        if(operatore==0){ //somma
+            risultato2D = *(o12d) + *(c1);
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato2D = *o12d - *c1;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato2D = *o12d * *c1;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato2D = *o12d / *c1;
+            risultato = &risultato2D;
+        }
+    }
+
+    if(o12d && o21d){ //Obj2D op1   ?operatore?   Obj1D op2
+        if(operatore==0){ //somma
+            risultato2D = *o12d + *o21d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato2D = *o12d - *o21d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato2D = *o12d * *o21d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato2D = *o12d / *o21d;
+            risultato = &risultato2D;
+        }
+    }
+
+    if(o12d && o22d){ //Obj2D op1   ?operatore?   Obj2D op2
+        if(operatore==0){ //somma
+            risultato2D = *o12d + *o22d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato2D = *o12d - *o22d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato2D = *o12d * *o22d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato2D = *o12d / *o22d;
+            risultato = &risultato2D;
+        }
+    }
+
+    if(o12d && o23d){ //Obj2D op1   ?operatore?   Obj3D op2
+        if(operatore==0){ //somma
+            risultato2D = *o12d + *o23d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato2D = *o12d - *o23d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato2D = *o12d * *o23d;
+            risultato = &risultato2D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato2D = *o12d / *o23d;
+            risultato = &risultato2D;
+        }
+    }
+    //FINE 2D
+
+    if(o13d && c2){ // Obj3D op1   ?operatore?   RGBhex op2
+        if(operatore==0){ //somma
+            risultato3D = *o13d + *c1;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato3D = *o13d - *c1;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato3D = *o13d * *c1;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato3D = *o13d / *c1;
+            risultato = &risultato3D;
+        }
+    }
+
+    if(o13d && o21d){ //Obj3D op1   ?operatore?   Obj1D op2
+        if(operatore==0){ //somma
+            risultato3D = *o13d + *o21d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato3D = *o13d - *o21d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato3D = *o13d * *o21d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato3D = *o13d / *o21d;
+            risultato = &risultato3D;
+        }
+    }
+
+    if(o13d && o22d){ //Obj3D op1   ?operatore?   Obj2D op2
+        if(operatore==0){ //somma
+            risultato3D = *o13d + *o22d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato3D = *o13d - *o22d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato3D = *o13d * *o22d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato3D = *o13d / *o22d;
+            risultato = &risultato3D;
+        }
+    }
+
+    if(o13d && o23d){ //Obj3D op1   ?operatore?   Obj3D op2
+        if(operatore==0){ //somma
+            risultato3D = *o13d + *o23d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultato3D = *o13d - *o23d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultato3D = *o13d * *o23d;
+            risultato = &risultato3D;
+        }
+
+        else if(operatore==3){ //divisione
+            risultato3D = *o13d / *o23d;
+            risultato = &risultato3D;
+        }
+    }
+    //FINE 3D
+
+    ////COLORE COME primo operatore ////
     //RGBHex op1   ?operatore?   RGBHex op2
     if(c1 && c2){
         if(operatore==0){ //somma
@@ -170,25 +439,192 @@ void BusinessLogic::esegui()
 
         else if(operatore==3){ // divisione
             risultatoRGBHex = *c1 / *c2;
-            risultato = risultatoRGBHex;
+            risultato = &risultatoRGBHex;
         }
     }
 
     if(c1 && o21d){ // RGBHex op1   ?operatore?   Obj1D op2
-        if(operatore==0){
+        if(operatore==0){ //somma
+            risultatoRGBHex = somma(*c1, *o21d);
+            risultato = &risultatoRGBHex;
+        }
 
+        else if(operatore==1){ //sottrazione
+            risultatoRGBHex = sottrazione(*c1, *o21d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultatoRGBHex = moltiplicazione(*c1, *o21d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==3){ //divisione
+            risultatoRGBHex = divisione(*c1, *o21d);
+            risultato = & risultatoRGBHex;
+        }
+
+    }
+
+    if(c1 && o22d){ //RGBHex op1   ?operatore?   Obj2D op2
+        if(operatore==0){ // somma
+            risultatoRGBHex = somma(*c1, *o22d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultatoRGBHex = sottrazione(*c1, *o22d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultatoRGBHex = moltiplicazione(*c1, *o22d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==3) //divisione
+            risultatoRGBHex = divisione(*c1, *o22d);
+            risultato = &risultatoRGBHex;
+    }
+
+    if(c1 && o23d){ //RGBHex op1   ?operatore?   Obj3D op2
+        if(operatore==0){ //somma
+            risultatoRGBHex = somma(*c1, *o23d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==1){ //sottrazione
+            risultatoRGBHex = sottrazione(*c1, *o23d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==2){ //moltiplicazione
+            risultatoRGBHex =  moltiplicazione(*c1, * o23d);
+            risultato = &risultatoRGBHex;
+        }
+
+        else if(operatore==3){ // divisione
+            risultatoRGBHex = divisione(*c1, *o23d);
+            risultato = &risultatoRGBHex;
         }
     }
-    }
+   }
 
 }
+
+
 
 void BusinessLogic::pulisci()
 {
+    op1 = 0;
+    op2 = 0;
+    risultato = 0;
 
 }
 
-bool BusinessLogic::saveResult()
+bool BusinessLogic::saveResult() //salva il risultato delle operazioni nel vector del tipo giusto
 {
+    Object_1D* Obj1 = dynamic_cast<Object_1D*>(risultato);
+    Object_2D* Obj2 = dynamic_cast<Object_2D*>(risultato);
+    Object_3D* Obj3 = dynamic_cast<Object_3D*>(risultato);
+    RGBHex* col = dynamic_cast<RGBHex*>(risultato);
 
+    if(Obj1)
+        monodimensionale.push_back(new Object_1D(Obj1->getLength(), Obj1->getRisoluzione(), Obj1->getColor()));
+    else if(Obj2)
+        bidimensionale.push_back(new Object_2D(Obj2->getLength(), Obj2->getHeight(), Obj2->getRisoluzione(), Obj2->getColor()));
+    else if(Obj3)
+        tridimensionale.push_back(new Object_3D(Obj3->getLength(), Obj3->getHeight(), Obj3->getDepth(), Obj3->getRisoluzione(), Obj3->getColor()));
+    else if(col)
+        colori.push_back(new RGBHex(col->getColor()));
+    else return false;
+    return true;
+}
+
+//funzioni statiche somma sottrazione tra rgb e classe derivante da space
+RGBHex BusinessLogic::somma(RGBHex &c, Object_1D &o)
+{
+    RGBHex b;
+    int val = c.getColorInt() + o.getColor().getColorInt();
+    if (val>16777215) val=16777215;
+    b.setColorInt(val);
+    return b;
+}
+
+RGBHex BusinessLogic::sottrazione(RGBHex &c, Object_1D &o)
+{
+    RGBHex b;
+    int val = c.getColorInt() - o.getColor().getColorInt();
+    if(val<0) val=0;
+    b.setColorInt(val);
+    return b;
+}
+
+RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_1D &o)
+{
+    RGBHex b = RGBHex(o.getColor().getColor());
+    return b;
+}
+
+RGBHex BusinessLogic::divisione(RGBHex& /*c */, Object_1D& /*o*/)
+{
+    throw Ecc_RGBHex_divisione_Object();
+}
+
+RGBHex BusinessLogic::somma(RGBHex &c, Object_2D &o)
+{
+    RGBHex b;
+    int val = c.getColorInt() + o.getColor().getColorInt();
+    if (val>16777215) val=16777215;
+    b.setColorInt(val);
+    return b;
+}
+
+RGBHex BusinessLogic::sottrazione(RGBHex &c, Object_2D &o)
+{
+    RGBHex b;
+    int val = c.getColorInt() - o.getColor().getColorInt();
+    if(val<0) val=0;
+    b.setColorInt(val);
+    return b;
+}
+
+RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_2D &o)
+{
+    RGBHex b = RGBHex(o.getColor().getColor());
+    return b;
+}
+
+RGBHex BusinessLogic::divisione(RGBHex &, Object_2D &)
+{
+    throw Ecc_RGBHex_divisione_Object();
+}
+
+RGBHex BusinessLogic::somma(RGBHex &c, Object_3D &o)
+{
+    RGBHex b;
+    int val = c.getColorInt() + o.getColor().getColorInt();
+    if (val>16777215) val=16777215;
+    b.setColorInt(val);
+    return b;
+}
+
+RGBHex BusinessLogic::sottrazione(RGBHex &c, Object_3D &o)
+{
+    RGBHex b;
+    int val = c.getColorInt() - o.getColor().getColorInt();
+    if(val<0) val=0;
+    b.setColorInt(val);
+    return b;
+}
+
+RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_3D &o)
+{
+    RGBHex b = RGBHex(o.getColor().getColor());
+    return b;
+}
+
+RGBHex BusinessLogic::divisione(RGBHex &, Object_3D &)
+{
+    throw Ecc_RGBHex_divisione_Object();
 }

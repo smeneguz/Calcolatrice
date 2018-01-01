@@ -3,7 +3,7 @@
 
 #include"space.h"
 
-class Object_2d : public Space{
+class Object_2D : public Space{
 private:
     int length; //lunghezza in pixel
     int height; // altezza in pixel
@@ -11,11 +11,11 @@ private:
 
 public:
 
-    Object_2d();
-    Object_2d(int l);
-    Object_2d(int l, int h);
-    Object_2d(int l, int h, int risol);
-    Object_2d(int l, int h, int risol, RGBHex c);
+    Object_2D();
+    Object_2D(int l);
+    Object_2D(int l, int h);
+    Object_2D(int l, int h, int risol);
+    Object_2D(int l, int h, int risol, RGBHex c);
 
     virtual int CalcolaSuperficie();
     virtual Status getStatus() const;
@@ -27,16 +27,16 @@ public:
     void setHeight(int h);
 
     // Overloading di operatori
-    Object_2d& operator+(const Space& x);
-    Object_2d& operator-(const Space& x);
-    Object_2d& operator*(const Space& x);
-    Object_2d& operator/(const Space& x);
+    Object_2D& operator+(const Space& x);
+    Object_2D& operator-(const Space& x);
+    Object_2D& operator*(const Space& x);
+    Object_2D& operator/(const Space& x);
 
     //Operator Oggetto 2 dimensioni con colore
-    Object_2d& operator+(const RGBHex& x);
-    Object_2d& operator-(const RGBHex& x);
-    Object_2d& operator*(const RGBHex& x);
-    Object_2d& operator/(const RGBHex& x);
+    Object_2D& operator+(const RGBHex& x);
+    Object_2D& operator-(const RGBHex& x);
+    Object_2D& operator*(const RGBHex& x);
+    Object_2D& operator/(const RGBHex& x);
     //EREDITO QUESTI DALLA BASE VIRTUALI PURI
     //OVERRIDING
     //opertor di un oggetto a due dimensioni con un possibili oggetti a più dimensioni
