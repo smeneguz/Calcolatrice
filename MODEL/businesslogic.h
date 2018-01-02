@@ -4,6 +4,7 @@
 #include "object_2d.h"
 #include "object_3d.h"
 #include <vector>
+#include <iostream>
 
 class BusinessLogic{
 private:

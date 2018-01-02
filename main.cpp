@@ -2,6 +2,7 @@
 #include <QApplication>
 #include "MODEL/businesslogic.h"
 #include<iostream>
+#include <typeinfo>
 
 
 
@@ -26,17 +27,22 @@ int main(int argc, char *argv[])
     std::cout << 2;
 
     RGBHex r2 = RGBHex("0005AA");
-    Object * op1 = j;
+    Object * op1 = k;
     Object* op2 = b;
     std::cout << 3;
-
+    if (typeid(*op1)== typeid(Object_2D)) std::cout<< "uguali";
     bu.setOp1(op1);
     bu.setOp2(op2);
+    if (typeid(*(bu.getOp1()))== typeid(Object_2D)) std::cout<< "uguali";
+    else std::cout << "diversi";
+
+    if (typeid(*(bu.getOp2()))== typeid(RGBHex)) std::cout<< "uguali";
+
     bu.setOperator(1);
     bu.esegui();
     //Status s1 = bu.getRisultato()->getStatus();
     //std::cout << s1.color << "  "<<s1.d << "   "<< s1.l;
 
-
+//problema con operazioni che hanno come secondo operando colore
     return a.exec();
 }

@@ -113,7 +113,7 @@ void RGBHex::setColorInt(int c) {
 
 //ritorno color
 int RGBHex::getColorInt() const {
-    return RGBHex::color;
+    return color;
 }
 
 ////////////////////////////////////////////////

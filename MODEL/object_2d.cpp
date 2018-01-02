@@ -148,7 +148,7 @@ Object_2D& Object_2D::operator+(const RGBHex &x)
 Object_2D& Object_2D::operator-(const RGBHex &x)
 {
     RGBHex b;
-    int val = col.getColorInt() - x.getColorInt();
+    int val = this->getColor().getColorInt() - x.getColorInt();
     if(val<0) val=0;
     b.setColorInt(val);
     this->setColor(b);
