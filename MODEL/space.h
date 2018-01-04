@@ -11,7 +11,7 @@
 class Space : public Object {
 protected:
     int dpi; // risoluzione di stampa che sarà poi definita in modo opportuno nelle sottoclassi
-    RGBHex col; // puntatore ad una classe colore
+    RGBHex col; // oggetto di tipo colore
 
 public:
     virtual int getLength() const = 0;

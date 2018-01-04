@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     std::cout << b->getColor();
     //devo usare la classe business logic
-    Object* k = new Object_1D();
+    Object* k = new Object_1D(4,3, *b);
     Space* l = new Object_1D(4);
 
     Space* j = new Object_2D(4,6);

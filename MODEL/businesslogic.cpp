@@ -153,22 +153,22 @@ void BusinessLogic::esegui()
 
     if(o11d && c2){ // Obj1D op1   ?operatore?   RGBhex op2
         if(operatore==0){ //somma
-            risultato1D = *o11d + *c1;
+            risultato1D = *o11d + *c2;
             risultato = &risultato1D;
         }
 
         else if(operatore==1){ //sottrazione
-            risultato1D = *o11d - *c1;
+            risultato1D = *o11d - *c2;
             risultato = &risultato1D;
         }
 
         else if(operatore==2){ //moltiplicazione
-            risultato1D = *o11d * *c1;
+            risultato1D = *o11d * *c2;
             risultato = &risultato1D;
         }
 
         else if(operatore==3){ //divisione
-            risultato1D = *o11d / *c1;
+            risultato1D = *o11d / *c2;
             risultato = &risultato1D;
         }
     }
@@ -243,22 +243,22 @@ void BusinessLogic::esegui()
 
     if(o12d && c2){ // Obj2D op1   ?operatore?   RGBhex op2
         if(operatore==0){ //somma
-            risultato2D = *(o12d) + *(c1);
+            risultato2D = *o12d + *c2;
             risultato = &risultato2D;
         }
 
         else if(operatore==1){ //sottrazione
-            risultato2D = *o12d - *c1;
+            risultato2D = *o12d - *c2;
             risultato = &risultato2D;
         }
 
         else if(operatore==2){ //moltiplicazione
-            risultato2D = *o12d * *c1;
+            risultato2D = *o12d * *c2;
             risultato = &risultato2D;
         }
 
         else if(operatore==3){ //divisione
-            risultato2D = *o12d / *c1;
+            risultato2D = *o12d / *c2;
             risultato = &risultato2D;
         }
     }
@@ -332,22 +332,22 @@ void BusinessLogic::esegui()
 
     if(o13d && c2){ // Obj3D op1   ?operatore?   RGBhex op2
         if(operatore==0){ //somma
-            risultato3D = *o13d + *c1;
+            risultato3D = *o13d + *c2;
             risultato = &risultato3D;
         }
 
         else if(operatore==1){ //sottrazione
-            risultato3D = *o13d - *c1;
+            risultato3D = *o13d - *c2;
             risultato = &risultato3D;
         }
 
         else if(operatore==2){ //moltiplicazione
-            risultato3D = *o13d * *c1;
+            risultato3D = *o13d * *c2;
             risultato = &risultato3D;
         }
 
         else if(operatore==3){ //divisione
-            risultato3D = *o13d / *c1;
+            risultato3D = *o13d / *c2;
             risultato = &risultato3D;
         }
     }
