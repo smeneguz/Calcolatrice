@@ -34,7 +34,10 @@ SOURCES += \
     MODEL/object_3d.cpp \
     MODEL/businesslogic.cpp \
     MODEL/status.cpp \
-    MODEL/object.cpp
+    MODEL/object.cpp \
+    VIEW/colorrange.cpp \
+    VIEW/color.cpp \
+    VIEW/colorzone.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +50,10 @@ HEADERS += \
     MODEL/exceptions.h \
     MODEL/businesslogic.h \
     MODEL/status.h \
-    MODEL/object.h
+    MODEL/object.h \
+    VIEW/colorrange.h \
+    VIEW/color.h \
+    VIEW/colorzone.h
 
 FORMS += \
         mainwindow.ui
