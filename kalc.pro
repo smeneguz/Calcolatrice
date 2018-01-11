@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    VIEW/boh.cpp \
     MODEL/rgbhex.cpp \
     MODEL/space.cpp \
     MODEL/object_1d.cpp \
@@ -36,12 +35,13 @@ SOURCES += \
     MODEL/status.cpp \
     MODEL/object.cpp \
     VIEW/colorrange.cpp \
-    VIEW/color.cpp \
-    VIEW/colorzone.cpp
+    VIEW/colorzone.cpp \
+    VIEW/createcolor.cpp \
+    VIEW/toolbar.cpp \
+    VIEW/newobject1d.cpp
 
 HEADERS += \
         mainwindow.h \
-    VIEW/boh.h \
     MODEL/rgbhex.h \
     MODEL/space.h \
     MODEL/object_1d.h \
@@ -52,8 +52,10 @@ HEADERS += \
     MODEL/status.h \
     MODEL/object.h \
     VIEW/colorrange.h \
-    VIEW/color.h \
-    VIEW/colorzone.h
+    VIEW/colorzone.h \
+    VIEW/createcolor.h \
+    VIEW/toolbar.h \
+    VIEW/newobject1d.h
 
 FORMS += \
         mainwindow.ui

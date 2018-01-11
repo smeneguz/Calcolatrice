@@ -4,8 +4,9 @@
 #include <iostream>
 #include <typeinfo>
 #include "VIEW/colorrange.h"
-#include "VIEW/color.h"
+#include "VIEW/createcolor.h"
 #include "VIEW/colorzone.h"
+#include "./VIEW/prova.h"
 
 
 
@@ -46,9 +47,10 @@ int main(int argc, char *argv[])
     //Status s1 = bu.getRisultato()->getStatus();
     //std::cout << s1.color << "  "<<s1.d << "   "<< s1.l;
 
+    //Prova* as= new Prova();
 
-    MainWindow w;
-    w.show();
+    //MainWindow w;
+    //as->show();
 //problema con operazioni che hanno come secondo operando colore
     return a.exec();
 }
