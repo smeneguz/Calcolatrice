@@ -1,6 +1,6 @@
 #include "newobject1d.h"
 
-NewObject1D::NewObject1D(BusinessLogic l, QWidget *parent) : QWidget(parent), log(l)
+NewObject1D::NewObject1D(BusinessLogic* l, QWidget *parent) : QWidget(parent), log(l)
 {
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
@@ -43,6 +43,7 @@ NewObject1D::NewObject1D(BusinessLogic l, QWidget *parent) : QWidget(parent), lo
     gridMisura->addWidget(inch, 2, 0);
 
     boxMisura->setLayout(gridMisura);
+    gridBox->addWidget(boxMisura,0,2);
 
     //bottone creazione
     create = new QPushButton(tr("Create"));
@@ -54,7 +55,8 @@ NewObject1D::NewObject1D(BusinessLogic l, QWidget *parent) : QWidget(parent), lo
     newLineBox->setLayout(gridBox);
     struttura->addWidget(newLineBox, 0, 0);
 
-    connect(create, SIGNAL(clicked()), this, SLOT(saveLinea()));
+    //connect
+    connect(create, SIGNAL(clicked()), this, SLOT(saveObject1D()));
     connect(px, SIGNAL(clicked()),this,SLOT(setPx()));
     connect(cm, SIGNAL(clicked()),this,SLOT(setCm()));
     connect(inch, SIGNAL(clicked()),this,SLOT(setInch()));
@@ -62,20 +64,65 @@ NewObject1D::NewObject1D(BusinessLogic l, QWidget *parent) : QWidget(parent), lo
 
 void NewObject1D::saveObject1D()
 {
+    //messaaggi errori o warning
+    QMessageBox errorMsg;
+    errorMsg.setWindowTitle(tr("Error!"));
+    bool error = false;
+    QMessageBox warningMsg;
+    warningMsg.setWindowTitle(tr("Attention!"));
+    bool warning = false;
 
+    //controlli su lunghezze
+    QString s = QString(length->text());
+    if(s.trimmed().isEmpty()){
+        errorMsg.setInformativeText(tr("Insert string not empy pls!"));
+        error = true;
+    }
+    double lungD = (length->text().toDouble());
+    if(lungD == 0){
+         warningMsg.setText(tr("value = 0 or value not valid"));
+         warningMsg.setInformativeText(tr("set new Object1D to 1px"));
+         warning = true;
+    }
+    //unità di misura (correlato lunghezza obj1D) check
+    int l;
+    if(misura==1) l = static_cast<int>(lungD*risoluzione->text().toInt()*2.54); //risoluzione->text().toInt() == risoluzione space (dpi)
+    else if (misura==2) l = static_cast<int>(lungD*risoluzione->text().toInt());
+    else l = (length->text()).toInt();
+    //check punti per pollice
+    int ris = risoluzione->text().toInt();
+    if(ris==0){
+        errorMsg.setText(tr("dpi not valid, insert new dots per inch"));
+        error = true;
+    }
+
+    //set all
+    if(error) errorMsg.exec();
+    else {
+        if(l == 0) l=1; // lunghezza di un oggetto a 1D non può essere 0, minimo 1 che coincide con un punto
+        if(warning) warningMsg.exec();
+        log->newObj1D(l,ris); //effettiva chiamata di creazione nuovo Objec1D
+        emit Object1DAdded();
+    }
 }
 
 void NewObject1D::setPx()
 {
-
+    misura=0;
+    update();
+    repaint();
 }
 
 void NewObject1D::setCm()
 {
-
+    misura=1;
+    update();
+    repaint();
 }
 
 void NewObject1D::setInch()
 {
-
+    misura=2;
+    update();
+    repaint();
 }

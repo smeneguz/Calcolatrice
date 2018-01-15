@@ -1,5 +1,5 @@
-#ifndef NEWOBJECT1D_H
-#define NEWOBJECT1D_H
+#ifndef NEWOBJECT2D_H
+#define NEWOBJECT2D_H
 
 #include "../MODEL/businesslogic.h"
 #include <QWidget>
@@ -12,7 +12,7 @@
 #include <QMessageBox>
 #include <QString>
 
-class NewObject1D : public QWidget {
+class NewObject2D : public QWidget {
     Q_OBJECT
 private:
     BusinessLogic* log;
@@ -23,19 +23,20 @@ private:
     QGridLayout* gridMisura;
     QLineEdit* risoluzione;
     QLineEdit* length;
+    QLineEdit* height; //aggiunta rispetto object1d
     QPushButton* create;
     int misura; // 0=pixel 1=cm 2=inch
 public:
-    NewObject1D(BusinessLogic *l, QWidget *parent = 0);
+    NewObject2D(BusinessLogic l,QWidget *parent = 0);
 
-signals:   
-    void Object1DAdded();
+signals:
+    void Object2DAdded();
 
 public slots:
-    void saveObject1D();
+    void saveObject2D();
     void setPx();
     void setCm();
     void setInch();
 };
 
-#endif // NEWOBJECT1D_H
+#endif // NEWOBJECT2D_H

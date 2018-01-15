@@ -38,7 +38,8 @@ SOURCES += \
     VIEW/colorzone.cpp \
     VIEW/createcolor.cpp \
     VIEW/toolbar.cpp \
-    VIEW/newobject1d.cpp
+    VIEW/newobject1d.cpp \
+    VIEW/newobject2d.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -55,7 +56,8 @@ HEADERS += \
     VIEW/colorzone.h \
     VIEW/createcolor.h \
     VIEW/toolbar.h \
-    VIEW/newobject1d.h
+    VIEW/newobject1d.h \
+    VIEW/newobject2d.h
 
 FORMS += \
         mainwindow.ui
