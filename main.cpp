@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-//#include "MODEL/businesslogic.h"
+#include "MODEL/businesslogic.h"
 #include <iostream>
 #include <typeinfo>
 #include "VIEW/colorrange.h"
@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     ////USANDO BUSINESS
     //BusinessLogic bu = BusinessLogic();
     std::cout << 2;
+
 
     RGBHex r2 = RGBHex("0005AA");
     Object * op1 = k;

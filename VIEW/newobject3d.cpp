@@ -1,12 +1,12 @@
-#include "newobject2d.h"
+#include "newobject3d.h"
 
-NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent), log(l)
+NewObject3D::NewObject3D(BusinessLogic *l, QWidget *parent) : QWidget(parent), log(l)
 {
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
     // box con scritta che contiene tutti gli altri box per la creazione
-    newLineBox = new QGroupBox(tr("Create new Object2D"));
-    setWindowTitle(tr("Create new Object2D"));
+    newLineBox = new QGroupBox(tr("Create new Object3D"));
+    setWindowTitle(tr("Create new Object3D"));
     // box dove si setta lunghezza e risoluzione
     gridBox = new QGridLayout();
 
@@ -15,6 +15,8 @@ NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent), l
     length = new QLineEdit();
     QLabel* h = new QLabel(tr("Height:"));
     height = new QLineEdit();
+    QLabel* d = new QLabel(tr("Depth:"));
+    depth = new QLineEdit();
     QLabel* r = new QLabel(tr("Resolution:"));
     risoluzione = new QLineEdit();
 
@@ -24,8 +26,10 @@ NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent), l
     gridBox->addWidget(length, 0, 1);
     gridBox->addWidget(h,1,0);
     gridBox->addWidget(height,1,1);
-    gridBox->addWidget(r, 2, 0);
-    gridBox->addWidget(risoluzione, 2, 1);
+    gridBox->addWidget(d,2,0);
+    gridBox->addWidget(depth,2,1);
+    gridBox->addWidget(r, 3, 0);
+    gridBox->addWidget(risoluzione, 3, 1);
 
     // zona misure
     boxMisura = new QGroupBox();
@@ -54,20 +58,20 @@ NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent), l
     create = new QPushButton(tr("Create"));
 
     //aggiungo al layout generale anche il bottone
-    gridBox->addWidget(create, 3, 1);
+    gridBox->addWidget(create, 4, 1);
 
     //sistemo il layout mettendo tutto insieme
     newLineBox->setLayout(gridBox);
     struttura->addWidget(newLineBox, 0, 0);
 
     //connect
-    connect(create, SIGNAL(clicked()), this, SLOT(saveObject2D()));
+    connect(create, SIGNAL(clicked()), this, SLOT(saveObject3D()));
     connect(px, SIGNAL(clicked()),this,SLOT(setPx()));
     connect(cm, SIGNAL(clicked()),this,SLOT(setCm()));
     connect(inch, SIGNAL(clicked()),this,SLOT(setInch()));
 }
 
-void NewObject2D::saveObject2D()
+void NewObject3D::saveObject3D()
 {
     //messaaggi errori o warning
     QMessageBox errorMsg;
@@ -86,7 +90,7 @@ void NewObject2D::saveObject2D()
     double lungL = (length->text().toDouble());
     if(lungL == 0){
          warningMsg.setText(tr("value length = 0 or value not valid"));
-         warningMsg.setInformativeText(tr("set new Object2D length to 1px"));
+         warningMsg.setInformativeText(tr("set new Object3D length to 1px"));
          warning = true;
     }
     // Controlli su altezza
@@ -98,33 +102,49 @@ void NewObject2D::saveObject2D()
     double lungH = (height->text()).toDouble();
     if(lungH == 0) {
         warningMsg.setText(tr("value length = 0 or value not valid"));
-        warningMsg.setInformativeText(tr("set new Object2D height to 1px"));
+        warningMsg.setInformativeText(tr("set new Object3D height to 1px"));
+        warning = true;
+    }
+    // Controlli su profondità
+    s = QString(depth->text());
+    if(s.trimmed().isEmpty()){
+        errorMsg.setInformativeText(tr("Insert depth string not empy pls!"));
+        error = true;
+    }
+    double lungD = (depth->text()).toDouble();
+    if(lungD == 0) {
+        warningMsg.setText(tr("value depth = 0 or value not valid"));
+        warningMsg.setInformativeText(tr("set new Object3D depth to 1px"));
         warning = true;
     }
 
-    //unità di misura (correlato lunghezza e altezza obj2D) check
+    //unità di misura (correlato lunghezza altezza e profondità obj3D) check
     int l;
     int h;
+    int d;
     if(misura==1) //cm
     {
         l = static_cast<int>(lungL*risoluzione->text().toDouble()*2.54); //risoluzione->text().toInt() == risoluzione space (dpi)
         h = static_cast<int>(lungH*risoluzione->text().toDouble()*2.54);
+        d = static_cast<int>(lungD*risoluzione->text().toDouble()*2.54);
     }
     else if (misura==2) //inch
     {
         l = static_cast<int>(lungL*risoluzione->text().toDouble());
         h = static_cast<int>(lungH*risoluzione->text().toDouble());
+        d = static_cast<int>(lungD*risoluzione->text().toDouble());
     }
 
     else
     {
         l = (length->text()).toInt();
         h = (height->text().toInt());
+        d = (depth->text().toInt());
     }
 
     //check punti per pollice
     int ris = risoluzione->text().toInt();
-    if(ris==0){
+    if(ris == 0){
         errorMsg.setText(tr("dpi not valid, insert new dots per inch"));
         error = true;
     }
@@ -135,27 +155,28 @@ void NewObject2D::saveObject2D()
     else {
         if(l == 0) l=1; // lunghezza di un oggetto a 1D non può essere 0, minimo 1 che coincide con un punto
         if(h == 0) h=1;
+        if(d == 0) d=1;
         if(warning) warningMsg.exec();
-        log->newObj2D(l, h, ris); //effettiva chiamata di creazione nuovo Objec1D
-        emit Object2DAdded();
+        log->newObj3D(l, h, d, ris); //effettiva chiamata di creazione nuovo Objec3D
+        emit Object3DAdded();
     }
 }
 
-void NewObject2D::setPx()
+void NewObject3D::setPx()
 {
     misura = 0;
     update();
     repaint();
 }
 
-void NewObject2D::setCm()
+void NewObject3D::setCm()
 {
     misura = 1;
     update();
     repaint();
 }
 
-void NewObject2D::setInch()
+void NewObject3D::setInch()
 {
     misura = 2;
     update();

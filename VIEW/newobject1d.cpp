@@ -87,7 +87,7 @@ void NewObject1D::saveObject1D()
     //unità di misura (correlato lunghezza obj1D) check
     int l;
     if(misura==1) l = static_cast<int>(lungD*risoluzione->text().toInt()*2.54); //risoluzione->text().toInt() == risoluzione space (dpi)
-    else if (misura==2) l = static_cast<int>(lungD*risoluzione->text().toInt());
+    else if (misura==2) l = static_cast<int>(lungD*risoluzione->text().toDouble());
     else l = (length->text()).toInt();
     //check punti per pollice
     int ris = risoluzione->text().toInt();
