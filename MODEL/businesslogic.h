@@ -41,6 +41,7 @@ public:
     Object_2D* getObj2D(int index);
     Object_3D* getObj3D(int index);
     RGBHex* getRGBHex(int index);
+    int getVectorSize(int i) const;
 
     //scegliere operatore 0 = somma, 1 = sottrazione, 2 = moltiplicazione, 3 = divisione
     void setOperator(int o);

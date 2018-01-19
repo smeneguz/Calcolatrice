@@ -40,7 +40,10 @@ SOURCES += \
     VIEW/toolbar.cpp \
     VIEW/newobject1d.cpp \
     VIEW/newobject2d.cpp \
-    VIEW/newobject3d.cpp
+    VIEW/newobject3d.cpp \
+    VIEW/operatori.cpp \
+    VIEW/select.cpp \
+    VIEW/selectdetails.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -59,7 +62,10 @@ HEADERS += \
     VIEW/toolbar.h \
     VIEW/newobject1d.h \
     VIEW/newobject2d.h \
-    VIEW/newobject3d.h
+    VIEW/newobject3d.h \
+    VIEW/operatori.h \
+    VIEW/select.h \
+    VIEW/selectdetails.h
 
 FORMS += \
         mainwindow.ui

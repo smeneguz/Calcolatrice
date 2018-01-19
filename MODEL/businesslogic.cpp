@@ -108,6 +108,19 @@ RGBHex *BusinessLogic::getRGBHex(int index)
     return o;
 }
 
+int BusinessLogic::getVectorSize(int i) const
+{
+    //bound index reference to specific contenitor
+    if (i < 0) i = 0;
+    if (i > 3) i = 3;
+    // 0 = monodimensionale, 1 = bidimensionale, 2 = tridimensionale, 3 = colori
+    if (i == 0) return monodimensionale.size();
+    if (i == 1) return bidimensionale.size();
+    if(i == 2) return tridimensionale.size();
+    //i == 3
+    return colori.size();
+}
+
 void BusinessLogic::setOperator(int o)
 {
     operatore = o;
