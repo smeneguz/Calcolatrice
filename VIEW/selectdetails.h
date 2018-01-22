@@ -35,7 +35,7 @@ public:
     SelectDetails(BusinessLogic* l, QWidget *parent = 0);
 
 signals:
-    //unici cambiamenti poddibili in questa sezione sono per misura
+    //unici cambiamenti disponibili in questa sezione sono per misura
     void changeMeasureObj1D(QListWidgetItem* i);
     void changeMeasureObj2D(QListWidgetItem* i);
     void changeMeasureObj3D(QListWidgetItem* i);
