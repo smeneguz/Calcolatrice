@@ -9,35 +9,46 @@
 #include <QFile>
 
 #include <QMainWindow>
+#include <QMenuBar>
+#include "./VIEW/table.h"
+#include "./MODEL/businesslogic.h"
 
 
-#include "./VIEW/toolbar.h"
-
-
-namespace Ui {
-class MainWindow;
-}
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
+
 private:
-    Ui::MainWindow *ui;
 
-    /* Sezione principale */
-    Toolbar* section;
+    QMenu* Create;
+        QAction* Add_Obj1D;
+        QAction* Add_Obj2D;
+        QAction* Add_Obj3D;
+        QAction* Add_Color;
+        QGridLayout* struttura;
+
+public:
+    MainWindow(QWidget *parent = 0);
+
+signals:
+    void itemAdded();
+
+public slots:
+    void addObject1D();
+    void addObject2D();
+    void addObject3D();
+    void addColor();
+
+};
 
 
 
-   // FormContinua* form;
 
 
 
 
 
-
-
-
-private slots:
+//private slots:
    //void store();
    //void chiudi();
    //void mostraTutto();
@@ -46,10 +57,8 @@ private slots:
    //void aggiungiNuovo();
 
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
 
-};
+
+
 
 #endif // MAINWINDOW_H

@@ -51,6 +51,7 @@ SelectDetails::SelectDetails(BusinessLogic *l, QWidget *parent) : QWidget(parent
     QLabel* c = new QLabel(tr("Color:"));
     color = new QLineEdit(tr("#"));
     color->setReadOnly(true);
+    colorZ = new ColorZone();
     colorZ->setFixedSize(50,50);
     colorZ->hide();
     //insert into general layout
@@ -175,6 +176,7 @@ void SelectDetails::updateObj1DD(QListWidgetItem *i)
     height->setText(tr(""));
     depth->setText(tr(""));
     ris->setText(tr(""));
+    color->setText(tr("#"));
     length->setDisabled(false);
     height->setDisabled(true);
     depth->setDisabled(true);
@@ -187,17 +189,106 @@ void SelectDetails::updateObj1DD(QListWidgetItem *i)
     Object_1D* o = log->getObj1D(index);
     log->setSelezione(o);
     Status s = o->getStatus();
+    //in base alla  misura scelgo il tipo di lunghezza
+    if(misura == 0) length->setText(QString::number(s.l));
+    else if(misura == 1) length->setText(QString::number(s.lCm));
+    else length->setText(QString::number(s.lInch));
 
+    //colore & risoluzione
+    ris->setText(QString::number(s.dpi));
+    RGBHex c = RGBHex(o->getColor());
+    color->setText("#" + QString::fromStdString(c.getColor()));
+    colorZ->setRed(c.getRint());
+    colorZ->setGreen(c.getGint());
+    colorZ->setBlue(c.getBint());
 
+    update();
+    repaint();
 
 }
 
 void SelectDetails::updateObj2DD(QListWidgetItem *i)
 {
+    selectedItem = i;
+    length->setText(tr(""));
+    height->setText(tr(""));
+    depth->setText(tr(""));
+    ris->setText(tr(""));
+    color->setText(tr("#"));
+    length->setDisabled(false);
+    height->setDisabled(false);
+    depth->setDisabled(true);
+    ris->setDisabled(false);
+    color->setDisabled(false);
+    boxMisura->setDisabled(false);
+    colorZ->show();
 
+    index = (i->text().toInt());
+    Object_2D* o = log->getObj2D(index);
+    log->setSelezione(o);
+    Status s = o->getStatus();
+    //in base alla  misura scelgo il tipo di lunghezza
+    if(misura == 0) length->setText(QString::number(s.l));
+    else if(misura == 1) length->setText(QString::number(s.lCm));
+    else length->setText(QString::number(s.lInch));
+    //in base alla  misura scelgo il tipo di altezza
+    if(misura == 0) height->setText(QString::number(s.h));
+    else if(misura == 1) height->setText(QString::number(s.hCm));
+    else height->setText(QString::number(s.hInch));
+
+    //colore & risoluzione
+    ris->setText(QString::number(s.dpi));
+    RGBHex c = RGBHex(o->getColor());
+    color->setText("#" + QString::fromStdString(c.getColor()));
+    colorZ->setRed(c.getRint());
+    colorZ->setGreen(c.getGint());
+    colorZ->setBlue(c.getBint());
+
+    update();
+    repaint();
 }
 
 void SelectDetails::updateObj3DD(QListWidgetItem *i)
 {
+    selectedItem = i;
+    length->setText(tr(""));
+    height->setText(tr(""));
+    depth->setText(tr(""));
+    ris->setText(tr(""));
+    color->setText(tr("#"));
+    length->setDisabled(false);
+    height->setDisabled(false);
+    depth->setDisabled(false);
+    ris->setDisabled(false);
+    color->setDisabled(false);
+    boxMisura->setDisabled(false);
+    colorZ->show();
 
+    index = (i->text().toInt());
+    Object_3D* o = log->getObj3D(index);
+    log->setSelezione(o);
+    Status s = o->getStatus();
+    //in base alla  misura scelgo il tipo di lunghezza
+    if(misura == 0) length->setText(QString::number(s.l));
+    else if(misura == 1) length->setText(QString::number(s.lCm));
+    else length->setText(QString::number(s.lInch));
+    //in base alla  misura scelgo il tipo di altezza
+    if(misura == 0) height->setText(QString::number(s.h));
+    else if(misura == 1) height->setText(QString::number(s.hCm));
+    else height->setText(QString::number(s.hInch));
+    //in base alla  misura scelgo il tipo di profondità
+    if(misura == 0) depth->setText(QString::number(s.d));
+    else if(misura == 1) depth->setText(QString::number(s.dCm));
+    else depth->setText(QString::number(s.dInch));
+
+    //colore & risoluzione
+    ris->setText(QString::number(s.dpi));
+    RGBHex c = RGBHex(o->getColor());
+    color->setText("#" + QString::fromStdString(c.getColor()));
+    colorZ->setRed(c.getRint());
+    colorZ->setGreen(c.getGint());
+    colorZ->setBlue(c.getBint());
+
+    update();
+    repaint();
 }

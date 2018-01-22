@@ -5,16 +5,23 @@
 #include <QPushButton>
 #include <QListWidget>
 #include <QWidget>
+#include "../MODEL/businesslogic.h"
+#include "selectdetails.h"
 
 //Select Zone
 class Select : public QWidget {
     Q_OBJECT
+private:
+     QListWidget* Object1DSelect;
+     QListWidget* Object2DSelect;
+     QListWidget* Object3DSelect;
+     QListWidget* ColSelected;
+     SelectDetails* Box;
+     QGridLayout* struttura;
+     BusinessLogic* log;
 public:
-    Select(QWidget *parent = 0);
+    Select(BusinessLogic* l, QWidget *parent = 0);
 
-signals:
-
-public slots:
 };
 
 #endif // SELECT_H

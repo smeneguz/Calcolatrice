@@ -15,7 +15,7 @@ private:
     QGridLayout* struttura;
     QListWidget* selectObj1D;
     QListWidget* selectObj2D;
-    //QListWidget* selectObj3D;
+    QListWidget* selectObj3D;
     QListWidget* selectCol;
 
 

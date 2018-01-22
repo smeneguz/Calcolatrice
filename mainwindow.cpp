@@ -1,13 +1,29 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 
 
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
-    //ui->setupUi(this);
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+
+
+
+    /* Configurazioni della finestra; */
+    setWindowTitle(tr("Kalk"));
+    setWindowIcon(QIcon(":/images/logo.png"));
+    setGeometry(200,150,1000,500);
+
+
+
+
+    BusinessLogic* bu = new BusinessLogic();
+    Table* t =new Table(bu);
+
+
+
+
+
+
+    t->show();
 
 
 
@@ -16,7 +32,23 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
-MainWindow::~MainWindow()
+void MainWindow::addObject1D()
 {
-    delete ui;
+
 }
+
+void MainWindow::addObject2D()
+{
+
+}
+
+void MainWindow::addObject3D()
+{
+
+}
+
+void MainWindow::addColor()
+{
+
+}
+

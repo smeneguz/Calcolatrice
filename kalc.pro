@@ -43,7 +43,8 @@ SOURCES += \
     VIEW/newobject3d.cpp \
     VIEW/operatori.cpp \
     VIEW/select.cpp \
-    VIEW/selectdetails.cpp
+    VIEW/selectdetails.cpp \
+    VIEW/table.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -65,7 +66,8 @@ HEADERS += \
     VIEW/newobject3d.h \
     VIEW/operatori.h \
     VIEW/select.h \
-    VIEW/selectdetails.h
+    VIEW/selectdetails.h \
+    VIEW/table.h
 
 FORMS += \
         mainwindow.ui
