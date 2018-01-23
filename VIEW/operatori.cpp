@@ -7,10 +7,10 @@ Operatori::Operatori(QWidget *parent) : QWidget(parent)
 
     QGroupBox* groupBox = new QGroupBox(tr("Select Operator"));
     QGridLayout* structO = new QGridLayout(); //come vengono disposti i pulsanti di + - % *
-    QPushButton* add = new QPushButton(tr("+"));
-    QPushButton* sub = new QPushButton(tr("-"));
-    QPushButton* mult = new QPushButton(tr("x"));
-    QPushButton* div = new QPushButton(tr(":"));
+    QRadioButton* add = new QRadioButton(tr("+"));
+    QRadioButton* sub = new QRadioButton(tr("-"));
+    QRadioButton* mult = new QRadioButton(tr("x"));
+    QRadioButton* div = new QRadioButton(tr(":"));
 
     structO->addWidget(add, 0, 0);
     structO->addWidget(sub, 0, 1);

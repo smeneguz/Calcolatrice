@@ -13,10 +13,11 @@ Table::Table(BusinessLogic* l, QWidget *parent) : QWidget(parent), log(l)
 void Table::addItem()
 {
     Select* a = new Select(log);
-    table->addWidget(a, 0, 0);
+    table->addWidget(a, 1, 0);
     delete sel;
     sel = new Select(log);
     table->removeWidget(a);
-    table->addWidget(sel, 0, 0);
+    table->addWidget(sel, 1, 0);
     delete a;
+    a = 0;
 }

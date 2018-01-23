@@ -31,4 +31,6 @@ class Ecc_Object3D_divisione_ObjectDiverso{};
 //ECC COLORI
 class Ecc_RGBHex_divisione_Object{};
 
+class Ecc_RGBHex_moltiplicazione_Object{};
+
 #endif // EXCEPTIONS_H

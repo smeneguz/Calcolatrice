@@ -573,10 +573,9 @@ RGBHex BusinessLogic::sottrazione(RGBHex &c, Object_1D &o)
     return b;
 }
 
-RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_1D &o)
+RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_1D /*&o*/)
 {
-    RGBHex b = RGBHex(o.getColor().getColor());
-    return b;
+    throw Ecc_RGBHex_moltiplicazione_Object();
 }
 
 RGBHex BusinessLogic::divisione(RGBHex& /*c */, Object_1D& /*o*/)

@@ -22,6 +22,7 @@ private:
     QPushButton* uguale;
     QPushButton* save;
     Operatori* op;
+    QString stringResult (Object* o) const;
 
 
 

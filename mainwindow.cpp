@@ -12,19 +12,31 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     struttura = new QGridLayout(this);
     BusinessLogic* bu = new BusinessLogic();
+
+    Calculate* c = new Calculate(bu);
+    struttura->addWidget(c);
     Table* t =new Table(bu);
+    struttura->addWidget(t);
+    QGroupBox* all = new QGroupBox();
+    all->setLayout(struttura);
+
+
+
+
     //setCentralWidget(t);
-    this->setCentralWidget(t);
+    this->setCentralWidget(all);
     NewObject1D* n1 = new NewObject1D(bu);
     NewObject2D* n2 = new NewObject2D(bu);
     NewObject3D* n3 = new NewObject3D(bu);
     CreateColor* nc = new CreateColor(bu);
-    struttura->addWidget(n1,0,0);
-    struttura->addWidget(n2,0,1);
-    struttura->addWidget(n3,0,2);
-    struttura->addWidget(nc,0,3);
-    this->setLayout(struttura);
-    this->layout();
+    //questi mi posizionano i creatori di oggetti in homepage ma non voglio
+    //struttura->addWidget(n1,0,0);
+    //struttura->addWidget(n2,0,1);
+    //struttura->addWidget(n3,0,2);
+    //struttura->addWidget(nc,0,3);
+
+    //this->setLayout(struttura);
+    //this->layout();
 
 
 
@@ -32,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     /* Configurazioni della finestra; */
     setWindowTitle(tr("Kalc"));
-    setWindowIcon(QIcon(":/kalk.png"));
+    this->setWindowIcon(QIcon(":/img/kalk.png"));
     setGeometry(200,150,1000,500);
 
     //MENU
@@ -40,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     menuBar()->addMenu(Create);
 
     //Create OBJ1D
-    Add_Obj1D = new QAction(QIcon("../DISTFILES/kalk.png"), tr("Create new Object1D"), this);
+    Add_Obj1D = new QAction(QIcon(":/img/kalk.png"), tr("Create new Object1D"), this);
     Create->addAction(Add_Obj1D);
     //connect(Add_Obj1D, SIGNAL)
     connect(n1, SIGNAL(Object1DAdded()), this, SLOT(addObject1D()));

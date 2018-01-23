@@ -37,7 +37,6 @@ SOURCES += \
     VIEW/colorrange.cpp \
     VIEW/colorzone.cpp \
     VIEW/createcolor.cpp \
-    VIEW/toolbar.cpp \
     VIEW/newobject1d.cpp \
     VIEW/newobject2d.cpp \
     VIEW/newobject3d.cpp \
@@ -61,7 +60,6 @@ HEADERS += \
     VIEW/colorrange.h \
     VIEW/colorzone.h \
     VIEW/createcolor.h \
-    VIEW/toolbar.h \
     VIEW/newobject1d.h \
     VIEW/newobject2d.h \
     VIEW/newobject3d.h \
@@ -74,5 +72,5 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-DISTFILES += \
-    kalk.png
+RESOURCES += \
+    icons.qrc

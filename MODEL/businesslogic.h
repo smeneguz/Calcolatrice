@@ -63,7 +63,7 @@ public:
     // RGBHex && oggetto1D
     static RGBHex somma(RGBHex& c, Object_1D& o);
     static RGBHex sottrazione(RGBHex& c, Object_1D& o);
-    static RGBHex moltiplicazione(RGBHex& , Object_1D& o);
+    static RGBHex moltiplicazione(RGBHex& , Object_1D);
     static RGBHex divisione(RGBHex&, Object_1D&);
 
     // RGBHex && oggetto2D
