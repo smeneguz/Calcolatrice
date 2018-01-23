@@ -44,7 +44,8 @@ SOURCES += \
     VIEW/operatori.cpp \
     VIEW/select.cpp \
     VIEW/selectdetails.cpp \
-    VIEW/table.cpp
+    VIEW/table.cpp \
+    VIEW/calculate.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -67,7 +68,11 @@ HEADERS += \
     VIEW/operatori.h \
     VIEW/select.h \
     VIEW/selectdetails.h \
-    VIEW/table.h
+    VIEW/table.h \
+    VIEW/calculate.h
 
 FORMS += \
         mainwindow.ui
+
+DISTFILES += \
+    kalk.png

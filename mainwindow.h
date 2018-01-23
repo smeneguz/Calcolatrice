@@ -12,6 +12,11 @@
 #include <QMenuBar>
 #include "./VIEW/table.h"
 #include "./MODEL/businesslogic.h"
+#include "./VIEW/newobject1d.h"
+#include "./VIEW/newobject2d.h"
+#include "./VIEW/newobject3d.h"
+#include "./VIEW/createcolor.h"
+
 
 
 
@@ -25,7 +30,10 @@ private:
         QAction* Add_Obj2D;
         QAction* Add_Obj3D;
         QAction* Add_Color;
-        QGridLayout* struttura;
+
+    QGridLayout* struttura;
+
+
 
 public:
     MainWindow(QWidget *parent = 0);
