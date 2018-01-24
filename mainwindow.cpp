@@ -13,8 +13,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     struttura = new QGridLayout(this);
     BusinessLogic* bu = new BusinessLogic();
 
+    //parte di calcolo
     Calculate* c = new Calculate(bu);
     struttura->addWidget(c);
+    //parte di contenitori oggetti e visione dettagli
     Table* t =new Table(bu);
     struttura->addWidget(t);
     QGroupBox* all = new QGroupBox();
@@ -44,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     /* Configurazioni della finestra; */
     setWindowTitle(tr("Kalc"));
-    this->setWindowIcon(QIcon(":/img/kalk.png"));
+    setWindowIcon(QIcon(":/img/kalk.png"));
     setGeometry(200,150,1000,500);
 
     //MENU
@@ -52,23 +54,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     menuBar()->addMenu(Create);
 
     //Create OBJ1D
-    Add_Obj1D = new QAction(QIcon(":/img/kalk.png"), tr("Create new Object1D"), this);
+    Add_Obj1D = new QAction(QIcon(":/img/1D.png"), tr("Create new Object1D"), this);
     Create->addAction(Add_Obj1D);
     //connect(Add_Obj1D, SIGNAL)
     connect(n1, SIGNAL(Object1DAdded()), this, SLOT(addObject1D()));
 
     //Create OBJ2D
-    Add_Obj2D = new QAction(QIcon(":/img/kalk.png"), tr("Create new Object2D"), this);
+    Add_Obj2D = new QAction(QIcon(":/img/2D.png"), tr("Create new Object2D"), this);
     Create->addAction(Add_Obj2D);
     connect(n2, SIGNAL(Object2DAdded()), this, SLOT(addObject2D()));
 
     //Create OBJ3D
-    Add_Obj3D = new QAction(QIcon(":/img/kalk.png"), tr("Create new Object3D"), this);
+    Add_Obj3D = new QAction(QIcon(":/img/3D.png"), tr("Create new Object3D"), this);
     Create->addAction(Add_Obj3D);
     connect(n3, SIGNAL(Object3DAdded()), this, SLOT(addObject3D()));
 
     //Create Color
-    Add_Color = new QAction(QIcon(":/img/kalk.png"), tr("Create new Color"), this);
+    Add_Color = new QAction(QIcon(":/img/color.png"), tr("Create new Color"), this);
     Create->addAction(Add_Color);
     connect(nc, SIGNAL(colorAdded()), this, SLOT(addColor()));
 

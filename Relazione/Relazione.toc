@@ -1,5 +1,5 @@
 \beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{First Section}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Subsection Example}{3}{0}{1}
+\beamer@sectionintoc {1}{Introduzione}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Cos'\IeC {\`e} Kalc?}{3}{0}{1}
 \beamer@sectionintoc {2}{Second Section}{7}{0}{2}
 \beamer@sectionintoc {3}{Design Pattern}{12}{0}{3}
