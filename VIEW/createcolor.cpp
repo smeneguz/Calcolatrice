@@ -1,7 +1,9 @@
 #include "createcolor.h"
 
-CreateColor::CreateColor(BusinessLogic *l, QWidget *parent) : QWidget(parent), logic(l)
+CreateColor::CreateColor(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 {
+    log = l;
+
     struttura = new QGridLayout(this);
     QGroupBox* boxNewLine = new QGroupBox(tr("create new color"));
     QGridLayout* boxGrid = new QGridLayout();
@@ -79,6 +81,6 @@ void CreateColor::setBlue(int b)
 
 void CreateColor::saveColor()
 {
-    logic->newColor(colhex->text().toStdString());
+    log->newColor(colhex->text().toStdString());
     emit colorAdded();
 }

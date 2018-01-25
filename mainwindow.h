@@ -10,14 +10,12 @@
 
 #include <QMainWindow>
 #include <QMenuBar>
-#include "./VIEW/table.h"
-#include "./VIEW/calculate.h"
+#include "./VIEW/contenitore.h"
 #include "./MODEL/businesslogic.h"
-#include "./VIEW/newobject1d.h"
-#include "./VIEW/newobject2d.h"
-#include "./VIEW/newobject3d.h"
-#include "./VIEW/createcolor.h"
+
 #include <QGroupBox>
+#include <QScrollArea>
+
 
 
 
@@ -32,21 +30,16 @@ private:
         QAction* Add_Obj3D;
         QAction* Add_Color;
 
-    QGridLayout* struttura;
 
 
 
 public:
     MainWindow(QWidget *parent = 0);
+    QWidget* pos;
 
-signals:
-    void itemAdded();
 
-public slots:
-    void addObject1D();
-    void addObject2D();
-    void addObject3D();
-    void addColor();
+
+
 
 };
 

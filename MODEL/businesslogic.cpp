@@ -35,7 +35,7 @@ Object *BusinessLogic::getSelezione() const
 void BusinessLogic::newObj1D(int l, int r)
 {
     Object_1D* o1 = new Object_1D(l,r);
-    monodimensionale.push_back(o1);
+    BusinessLogic::monodimensionale.push_back(o1);
 }
 
 void BusinessLogic::newObj2D(int l, int h, int r)

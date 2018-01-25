@@ -20,8 +20,10 @@ QString Calculate::stringResult(Object *o) const
     return res;
 }
 
-Calculate::Calculate(BusinessLogic *l, QWidget *parent) : QWidget(parent), log(l)
+Calculate::Calculate(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 {
+    log = l;
+
     //first operand
     QLabel* l1o = new QLabel(tr("first Operand"));
     firsto = new QLineEdit();
@@ -98,7 +100,7 @@ void Calculate::addOp2()
     if(sel){
         Object* o2 = log->getOp2();
         QString aux = stringResult(o2); // mi ritorna una stringa rappresentante il valore dell'object passato
-        firsto->setText(aux);
+        secondo->setText(aux);
     }
 }
 

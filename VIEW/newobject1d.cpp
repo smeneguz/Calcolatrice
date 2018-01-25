@@ -1,7 +1,15 @@
 #include "newobject1d.h"
 
-NewObject1D::NewObject1D(BusinessLogic* l, QWidget *parent) : QWidget(parent), log(l)
+NewObject1D::NewObject1D(BusinessLogic *l, QDialog *parent) : QDialog(parent)
 {
+    log = l;
+
+    //per settare come finestra object 1D create
+    //this->setWindowTitle("Add new Object1D");
+    //QDialog::reject();
+    //this->setModal(true);
+    //this->resize(500,300);
+
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
     // box con scritta che contiene tutti gli altri box per la creazione
@@ -60,6 +68,7 @@ NewObject1D::NewObject1D(BusinessLogic* l, QWidget *parent) : QWidget(parent), l
     connect(px, SIGNAL(clicked()),this,SLOT(setPx()));
     connect(cm, SIGNAL(clicked()),this,SLOT(setCm()));
     connect(inch, SIGNAL(clicked()),this,SLOT(setInch()));
+
 }
 
 void NewObject1D::saveObject1D()
@@ -99,11 +108,17 @@ void NewObject1D::saveObject1D()
     //set all
     if(error) errorMsg.exec();
     else {
-        if(l == 0) l=1; // lunghezza di un oggetto a 1D non può essere 0, minimo 1 che coincide con un punto
+        if(l == 0) l = 1; // lunghezza di un oggetto a 1D non può essere 0, minimo 1 che coincide con un punto
         if(warning) warningMsg.exec();
         log->newObj1D(l,ris); //effettiva chiamata di creazione nuovo Objec1D
+
+
+        //log adesso contiene almeno un oggetto 1D nella lista
+
         emit Object1DAdded();
+        //QDialog::hide();
     }
+
 }
 
 void NewObject1D::setPx()
@@ -126,3 +141,4 @@ void NewObject1D::setInch()
     update();
     repaint();
 }
+

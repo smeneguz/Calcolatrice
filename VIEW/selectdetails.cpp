@@ -1,7 +1,8 @@
 #include "selectdetails.h"
 
-SelectDetails::SelectDetails(BusinessLogic *l, QWidget *parent) : QWidget(parent), log(l)
+SelectDetails::SelectDetails(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 {
+    log = l;
     //set pixel come misura predefinita
     misura = 0;
     //box dettagli e misura
@@ -164,7 +165,7 @@ void SelectDetails::updateColorD(QListWidgetItem *i)
     colorZ->setBlue(c.getBint());
 
     //aggiorno
-    Grid->update();
+    update();
     repaint();
 
 }

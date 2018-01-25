@@ -26,7 +26,7 @@ private:
     QLineEdit* colhex;
     QGridLayout* struttura;
     QPushButton* create;
-    BusinessLogic* logic;
+    BusinessLogic* log;
     RGBHex col;
 public:
     CreateColor(BusinessLogic* l, QWidget *parent = 0);

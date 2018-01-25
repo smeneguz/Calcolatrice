@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui \
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -41,10 +41,11 @@ SOURCES += \
     VIEW/newobject2d.cpp \
     VIEW/newobject3d.cpp \
     VIEW/operatori.cpp \
-    VIEW/select.cpp \
     VIEW/selectdetails.cpp \
     VIEW/table.cpp \
-    VIEW/calculate.cpp
+    VIEW/calculate.cpp \
+    VIEW/createobject.cpp \
+    VIEW/contenitore.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -64,10 +65,11 @@ HEADERS += \
     VIEW/newobject2d.h \
     VIEW/newobject3d.h \
     VIEW/operatori.h \
-    VIEW/select.h \
     VIEW/selectdetails.h \
     VIEW/table.h \
-    VIEW/calculate.h
+    VIEW/calculate.h \
+    VIEW/createobject.h \
+    VIEW/contenitore.h
 
 FORMS += \
         mainwindow.ui

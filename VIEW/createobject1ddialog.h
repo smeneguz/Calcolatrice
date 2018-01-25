@@ -1,9 +1,9 @@
-#ifndef NEWOBJECT1D_H
-#define NEWOBJECT1D_H
+#ifndef CREATEOBJECT1DDIALOG_H
+#define CREATEOBJECT1DDIALOG_H
 #include <QDialog>
-
+#include <QLineEdit>
+#include <QString>
 #include "../MODEL/businesslogic.h"
-#include <QWidget>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -11,9 +11,8 @@
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QMessageBox>
-#include <QString>
 
-class NewObject1D : public QDialog {
+class CreateObject1DDialog : public QDialog {
     Q_OBJECT
 private:
     BusinessLogic* log;
@@ -26,18 +25,20 @@ private:
     QLineEdit* length;
     QPushButton* create;
     int misura; // 0=pixel 1=cm 2=inch
+
+    //nuovi campi privati per layout
+    QVBoxLayout* main;
+    QVBoxLayout* dati;
+    QPushButton* annulla;
 public:
-    NewObject1D(BusinessLogic *l, QDialog *parent = 0);
-
-
-signals:   
-    void Object1DAdded();
-
+    CreateObject1DDialog(BusinessLogic* l, QWidget* parent=0);
 public slots:
     void saveObject1D();
     void setPx();
     void setCm();
     void setInch();
+signals:
+    void Object1DAdded();
 };
 
-#endif // NEWOBJECT1D_H
+#endif // CREATEOBJECT1DDIALOG_H

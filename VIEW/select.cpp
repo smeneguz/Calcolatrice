@@ -1,7 +1,8 @@
 #include "select.h"
 
-Select::Select(BusinessLogic *l, QWidget *parent) : QWidget(parent), log(l)
+Select::Select(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 {
+    log = l;
     struttura = new QGridLayout(this);
     Object1DSelect = new QListWidget();
     Object2DSelect = new QListWidget();
@@ -58,3 +59,4 @@ Select::Select(BusinessLogic *l, QWidget *parent) : QWidget(parent), log(l)
 
 
 }
+

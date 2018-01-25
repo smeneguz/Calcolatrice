@@ -1,7 +1,8 @@
 #include "newobject3d.h"
 
-NewObject3D::NewObject3D(BusinessLogic *l, QWidget *parent) : QWidget(parent), log(l)
+NewObject3D::NewObject3D(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 {
+    log = l;
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
     // box con scritta che contiene tutti gli altri box per la creazione

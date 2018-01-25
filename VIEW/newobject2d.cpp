@@ -1,7 +1,9 @@
 #include "newobject2d.h"
 
-NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent), log(l)
+NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent)
 {
+    log = l;
+
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
     // box con scritta che contiene tutti gli altri box per la creazione

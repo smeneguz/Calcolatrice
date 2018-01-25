@@ -2,7 +2,6 @@
 #include <QApplication>
 #include <iostream>
 #include <typeinfo>
-#include "mainwindow.h"
 
 
 
