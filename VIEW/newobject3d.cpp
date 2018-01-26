@@ -1,7 +1,13 @@
 #include "newobject3d.h"
 
-NewObject3D::NewObject3D(BusinessLogic *l, QWidget *parent) : QWidget(parent)
+NewObject3D::NewObject3D(BusinessLogic *l, QDialog *parent) : QDialog(parent)
 {
+    //per settare come finestra object 1D create
+    this->setWindowTitle("Add new Object3D");
+    QDialog::reject();
+    this->setModal(true);
+    this->resize(500,300);
+
     log = l;
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
@@ -160,6 +166,11 @@ void NewObject3D::saveObject3D()
         if(warning) warningMsg.exec();
         log->newObj3D(l, h, d, ris); //effettiva chiamata di creazione nuovo Objec3D
         emit Object3DAdded();
+        length->setText("");
+        height->setText("");
+        depth->setText("");
+        risoluzione->setText("");
+        QDialog::close();
     }
 }
 

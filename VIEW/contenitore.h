@@ -38,8 +38,6 @@ private:
 public:
     Contenitore(BusinessLogic* l, QWidget *parent = 0);
 
-signals:
-    void refreshItemList();
 
 public slots:
     void addItem();

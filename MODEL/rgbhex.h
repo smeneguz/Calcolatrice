@@ -17,6 +17,7 @@ private:
     static int valueOf(std::string c, int n);
 public:
 
+
     RGBHex();
     RGBHex(std::string c);
     RGBHex(int r, int g, int b);

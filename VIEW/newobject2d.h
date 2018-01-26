@@ -12,7 +12,7 @@
 #include <QMessageBox>
 #include <QString>
 
-class NewObject2D : public QWidget {
+class NewObject2D : public QDialog {
     Q_OBJECT
 private:
     BusinessLogic* log;
@@ -27,7 +27,7 @@ private:
     QPushButton* create;
     int misura; // 0=pixel 1=cm 2=inch
 public:
-    NewObject2D(BusinessLogic *l, QWidget *parent = 0);
+    NewObject2D(BusinessLogic *l, QDialog *parent = 0);
 
 signals:
     void Object2DAdded();

@@ -172,7 +172,7 @@ int RGBHex::getBint() const {
 Status RGBHex::getStatus() const
 {
     Status s = Status();
-    s.color = this->getColor();
+    s.color += this->getColor();
     return s;
 }
 

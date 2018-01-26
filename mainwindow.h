@@ -3,13 +3,13 @@
 #include <QWidget>
 #include <QApplication>
 #include <QCloseEvent>
-
+#include <QMenuBar>
 #include <QMenu>
 #include <QToolBar>
 #include <QFile>
 
 #include <QMainWindow>
-#include <QMenuBar>
+
 #include "./VIEW/contenitore.h"
 #include "./MODEL/businesslogic.h"
 
@@ -36,10 +36,12 @@ private:
 public:
     MainWindow(QWidget *parent = 0);
     QWidget* pos;
+    BusinessLogic* bu;
 
 
 
-
+public slots:
+   // void addObject1D();
 
 };
 

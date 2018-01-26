@@ -1,8 +1,14 @@
 #include "newobject2d.h"
 
-NewObject2D::NewObject2D(BusinessLogic* l, QWidget *parent) : QWidget(parent)
+NewObject2D::NewObject2D(BusinessLogic* l, QDialog *parent) : QDialog(parent)
 {
     log = l;
+
+    //per settare come finestra object 1D create
+    this->setWindowTitle("Add new Object2D");
+    QDialog::reject();
+    this->setModal(true);
+    this->resize(500,300);
 
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
@@ -140,6 +146,10 @@ void NewObject2D::saveObject2D()
         if(warning) warningMsg.exec();
         log->newObj2D(l, h, ris); //effettiva chiamata di creazione nuovo Objec1D
         emit Object2DAdded();
+        length->setText("");
+        height->setText("");
+        risoluzione->setText("");
+        QDialog::close();
     }
 }
 

@@ -1,7 +1,13 @@
 #include "createcolor.h"
 
-CreateColor::CreateColor(BusinessLogic *l, QWidget *parent) : QWidget(parent)
+CreateColor::CreateColor(BusinessLogic *l, QDialog *parent) : QDialog(parent)
 {
+    //per settare come finestra object 1D create
+    this->setWindowTitle("Add new Color");
+    QDialog::reject();
+    this->setModal(true);
+    this->resize(500,300);
+
     log = l;
 
     struttura = new QGridLayout(this);
@@ -23,7 +29,7 @@ CreateColor::CreateColor(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 
     //set box color
     colorZone = new ColorZone();
-    colorZone->setFixedSize(20,20);
+    colorZone->setFixedSize(50,100);
 
 
     col = RGBHex(colorZone->getRed(),colorZone->getGreen(),colorZone->getBlue());
@@ -83,4 +89,8 @@ void CreateColor::saveColor()
 {
     log->newColor(colhex->text().toStdString());
     emit colorAdded();
+    colorZone->setRed(0);
+    colorZone->setGreen(0);
+    colorZone->setBlue(0);
+    QDialog::close();
 }

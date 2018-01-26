@@ -42,10 +42,10 @@ RGBHex Space::getColor() const
 
 Status Space::getStatus() const
 {
-    Status s = Status();
-    s.dpi = this->getRisoluzione();
-    s.color = this->getColor().getColor(); //il ptimo mi ritorna un rgb e get color di rgb mi ritorna una stringa
-    return s;
+    Status* s = new Status();
+    s->dpi = this->getRisoluzione();
+    s->color = this->getColor().getColor(); //il ptimo mi ritorna un rgb e get color di rgb mi ritorna una stringa
+    return *s;
 }
 
 

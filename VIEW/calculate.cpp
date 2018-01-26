@@ -2,12 +2,13 @@
 
 QString Calculate::stringResult(Object *o) const
 {
+    Status s = log->getStatus(*o);
     QString l = QString(tr(""));
     QString h = QString(tr(""));
     QString d = QString(tr(""));
     QString dpis = QString(tr(""));
     QString mis = QString(tr("")); //default pixel
-    Status s = log->getStatus(*o);
+    //Status s = log->getStatus(*o);
     QString c = QString::fromStdString(s.color);
     if((s.l) > 0) { // c'è una lunghezza -> minimo oggetto1D
         l = QString::number(s.l);

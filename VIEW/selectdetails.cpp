@@ -57,8 +57,8 @@ SelectDetails::SelectDetails(BusinessLogic *l, QWidget *parent) : QWidget(parent
     colorZ->hide();
     //insert into general layout
     Grid->addWidget(c, 4, 0); //posiziono subito sotto risoluzione
-    Grid->addWidget(color, 3, 1, 1, 2);
-    Grid->addWidget(colorZ, 4, 3);
+    Grid->addWidget(color, 4, 1, 1, 2);
+    Grid->addWidget(colorZ, 4,3);
 
     //set struttura
     Box->setLayout(Grid);

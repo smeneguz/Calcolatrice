@@ -15,8 +15,9 @@
 #include "colorrange.h"
 #include "colorzone.h"
 #include "../MODEL/businesslogic.h"
+#include <QDialog>
 
-class CreateColor : public QWidget {
+class CreateColor : public QDialog {
     Q_OBJECT
 private:
     ColorZone* colorZone;
@@ -29,7 +30,7 @@ private:
     BusinessLogic* log;
     RGBHex col;
 public:
-    CreateColor(BusinessLogic* l, QWidget *parent = 0);
+    CreateColor(BusinessLogic* l, QDialog *parent = 0);
 
 signals:
     void colorAdded();

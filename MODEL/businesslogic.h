@@ -3,8 +3,10 @@
 #include "object_1d.h"
 #include "object_2d.h"
 #include "object_3d.h"
+#include "rgbhex.h"
 #include <vector>
 #include <iostream>
+#include <typeinfo>
 
 class BusinessLogic{
 private:

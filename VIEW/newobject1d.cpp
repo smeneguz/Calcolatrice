@@ -5,10 +5,10 @@ NewObject1D::NewObject1D(BusinessLogic *l, QDialog *parent) : QDialog(parent)
     log = l;
 
     //per settare come finestra object 1D create
-    //this->setWindowTitle("Add new Object1D");
-    //QDialog::reject();
-    //this->setModal(true);
-    //this->resize(500,300);
+    this->setWindowTitle("Add new Object1D");
+    QDialog::reject();
+    this->setModal(true);
+    this->resize(500,300);
 
     //si costruisce struttura a griglia
     struttura = new QGridLayout(this);
@@ -116,7 +116,9 @@ void NewObject1D::saveObject1D()
         //log adesso contiene almeno un oggetto 1D nella lista
 
         emit Object1DAdded();
-        //QDialog::hide();
+        length->setText("");
+        risoluzione->setText("");
+        QDialog::close();
     }
 
 }

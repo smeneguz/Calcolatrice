@@ -12,7 +12,7 @@
 #include <QString>
 
 
-class NewObject3D : public QWidget {
+class NewObject3D : public QDialog {
     Q_OBJECT
 private:
     BusinessLogic* log;
@@ -28,7 +28,7 @@ private:
     QPushButton* create;
     int misura; // 0=pixel 1=cm 2=inch
 public:
-    NewObject3D(BusinessLogic* l, QWidget *parent = 0);
+    NewObject3D(BusinessLogic* l, QDialog *parent = 0);
 
 signals:
     void Object3DAdded();

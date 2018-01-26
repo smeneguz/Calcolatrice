@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
 
 
-    BusinessLogic* bu = new BusinessLogic();
+    bu = new BusinessLogic();
     Contenitore* cc = new Contenitore(bu);
     setCentralWidget(cc);
 
@@ -42,8 +42,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     //this->setLayout(struttura);
     //this->layout();
 
-
 /*
+
 
     // Configurazioni della finestra;
     setWindowTitle(tr("Kalc"));
@@ -95,34 +95,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     //prova->show();
     //connect(Add_Obj1D, SIGNAL(triggered(bool)), n1, SLOT(displaycreate(bu)) );
 
-*/
 
+*/
 }
 
-/*
+    /*
+
 void MainWindow::addObject1D()
 {
-    emit itemAdded();
-    //n1 = new NewObject1D(bu);
-    //n1->show();
-    //emit itemAdded();
+    NewObject1D* aa = new NewObject1D(bu);
+    aa->show();
 
 }
-
-void MainWindow::addObject2D()
-{
-    emit itemAdded();
-}
-
-void MainWindow::addObject3D()
-{
-    emit itemAdded();
-}
-
-void MainWindow::addColor()
-{
-    emit itemAdded();
-}
-
 */
+
 
