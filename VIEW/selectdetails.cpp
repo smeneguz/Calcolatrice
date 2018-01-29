@@ -156,7 +156,11 @@ void SelectDetails::updateColorD(QListWidgetItem *i)
     boxMisura->setDisabled(true);
     colorZ->show();
 
-    index = (i->text().toInt());
+    index = ((i->text()).toInt());
+    RGBHex* col = log->getRGBHex(index);
+    log->setSelezione(col);
+
+
     std::string s = (log->getRGBHex(index))->getColor();
     color->setText("#"+QString::fromStdString(s));
     RGBHex c = RGBHex(s);

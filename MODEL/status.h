@@ -6,18 +6,30 @@
 
 class Status{
 public:
+    //lunghezza
     int l;
     double lCm;
     double lInch;
+
+    //altezza
     int h;
     double hCm;
     double hInch;
+
+
+    //profondità
     int d;
     double dCm;
     double dInch;
+
+    //dpi
     int dpi;
+
+    //colore
     std::string color;
 
+
+    //costruttore
     Status();
 };
 
