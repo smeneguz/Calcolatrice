@@ -1,6 +1,7 @@
 
 
-\documentclass{beamer}
+
+\documentclass[10pt]{beamer}
 
 \mode<all> {
 
@@ -63,8 +64,10 @@
 \usepackage[utf8x]{inputenc} %\pacchetto per lettere accentate
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{listings}
+\usepackage{graphicx}
 
-
+\usepackage{placeins}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -86,9 +89,10 @@ Università di Padova - Dipartimento di Matematica \\ % Your institution for the
 \titlepage % Print the title page as the first slide
 \end{frame}
 
+%da toglire una volta finita la relazione
 \begin{frame}
 \frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\tableofcontents % Throughout your presentation, if you choose %to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
 \end{frame}
 
 %----------------------------------------------------------------------------------------
@@ -116,61 +120,58 @@ Ci sono 4 diversi tipi di dati tra cui è possibile svolgere operazioni; questi 
 \end{frame}
 
 %------------------------------------------------
+\section{Model}
+\begin{frame}
+\frametitle{Model}
+
+   \FloatBarrier
+   \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.30]{Gerarchia.png}
+   \caption{Gerarchia della parte Logica}
+\end{figure}
+
+
+\end{frame}
+
+%------------------------------------------------
 
 \begin{frame}
-\frametitle{Bullet Points}
+\frametitle{Classi Model}
 \begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+\item \textbf{Object} rappresenta una classe da cui deriva tutta la gerarchia, cosichè quando la \textit{BusinessLogic} andrà a fare operazioni sugli Object inseriti, a run time, eseguirà le operazioni esatte ed a aggiornerà lo \textit{Status} in modo adatto in base al tipo dinamico dell'Object selezionato.
+\item \textbf{Space} classe Astratta rappresentante un Oggetto dimensionale avente un colore e una definizione di stampa (dpi), da cui poi ereditano \textit{Object1D}, \textit{Object2D} e \textit{Object3D}.
+\item \textbf{Object1D} classe concreta che estende Space, possiede una lunghezza che determina se lo spazio dimensionale corrisponde a un punto unidimensionale (length=1) oppure un segmento.
+\item \textbf{Object2D} classe concreta che estende Space, possiede una lunghezza e una altezza e rappresenta un sottoinsieme del piano cartesiano (oggetto bidimensionale).
+\item \textbf{Object3D} classe concreta che estende Space, possiede una lunghezza, una altezza e una profondità e rappresenta un ogetto tridimensionale. 
+
+
+
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Classi Model}
+\begin{itemize}
+\item \textbf{RGBHex} classe concreta che deriva da Object, rappresenta un Colore RGB, costruibile tramite stringa (colore essadecimale), valori interi R G B.
+Questa classe copre semplicemente il ruolo di colorare \textit{Object} e potenzialmente anche di interagire tramite operazioni su soli oggetti \textit{RGBHex}.
+
+\item \textbf{Status} è una classe che svolge il ruolo di trasportatore; la classe Status è intrinseca in ogni classe derivante da Object, in quanto essa va ridefinita in base ai campi dati di quella classe. 
+
+\item \textbf{BusinessLogic} è la classe che racchiude tutta la logica, tramite la funzione esegui che verrà richiamata dalla GUI con l'operatore "=" a run-time verrà scelto l'operazione adeguata ai tipi, inoltre fa da tramite con la GUI per tutto ciò che concerne la parte di Model.
+\item \textbf{Exceptions} è la classe che contiene le classi di eccezioni che possono essere sollevate.
 \end{itemize}
 \end{frame}
 
 %------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
-\end{frame}
-
+\section{GUI}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Table}
+\frametitle{GUI}
 \begin{table}
 \begin{tabular}{l l l}
 \toprule
