@@ -64,15 +64,18 @@
 \usepackage[utf8x]{inputenc} %\pacchetto per lettere accentate
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-\usepackage{listings}
+\usepackage{verbatim}
 \usepackage{graphicx}
-
 \usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{xparse}
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Space Kalc]{Qt Kalc} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Space Kalc]{Qt Kalk} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Silvio Meneguzzo} % Your name
 \institute[Unipd] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -103,14 +106,15 @@ Università di Padova - Dipartimento di Matematica \\ % Your institution for the
 \section{Introduzione} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
-\subsection{Cos'è Kalc?} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\subsection{Cos'è Kalk?} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
-\frametitle{Cos'è Kalc?}
-Kalc è una calcolatrice che opera su tipi di dati non banali. \\
+\frametitle{Cos'è Kalk?}
+Kalk è una calcolatrice che opera su tipi di dati non banali. \\
 Questo progetto sviluppato durante il corso \textit{Programmazione ad oggetti} ha lo scopo di creare un applicativo che possa essere un buon esempio di programmazione ad Oggetti. \\
 Kalc mette a disposizione i classici operatori quali somma, sottrazione, moltiplicazione e divisione; la vera svolta sta nei tipi di dato che rappresentano tipi dimensionali colorati. \\
 Ci sono 4 diversi tipi di dati tra cui è possibile svolgere operazioni; questi sono: ogetti ad una dimensione, oggeti a due dimensioni, oggetti a tre dimensioni e un oggetto RGBHex color che rappresenta un colore.
+Ognuno di essi ha un campo dpi che determina la definizione di stampa, inoltre la calcolatrice agisce anche da convertitore tra pixel, cm e inch.
 
 %\begin{itemize}
 %\item[Object1] che consiste in un
@@ -172,49 +176,80 @@ Questa classe copre semplicemente il ruolo di colorare \textit{Object} e potenzi
 
 \begin{frame}
 \frametitle{GUI}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
+La GUI (Graphical User Interface) è strutturata:
+\begin{enumerate}
+\item MainWindow, da cui parte la creazione della BusinessLogic che a cascata verrà passata a tutti i sotto oggetti che comporranno il QGridLayout generale della calcolatrice, dopodichè viene costruito \textit{Contenitore}, che rappresenta, a tutti gli effetti, il layout generale di \textit{Space kalc}.
+
+\item Contenitore, è la classe che crea effettivamente gli oggetti che permetterano la creazione di Object (tramite CreateObject), la selezione degli Object su cui si vuole fare operazioni (tramite Table) e infine la parte di calcolo (Calculate) che consentirà dopo aver inserito due Object tramite i QpushButton "add here", di selezionare un operatore e fare i dovuti calcoli.
+\end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+\subsection{How to use} 
+\begin{frame}
+\frametitle{How to use GUI}
+Più in dettaglio vediamo le 3 componenti di Contenitore:
+
+   \FloatBarrier
+   \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.20]{Creazione.png}
+   \caption{Create Object}
+\end{figure}
+Questa zona si trova nella parte superiore della calcolatrice dentro un QMenuBar, e attraverso Create (QMenu) si apre un menu a tendina (formato da QAction) che attraveso la pressione di quest'ultimi, vengono richiamati i costruttori di Oggetti e mostrati in una Finestra che si sovrapporrà a MainWindow.
+
+
+   \FloatBarrier
+   \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.10]{Selezione.png}
+   \caption{Selection Object}
+\end{figure}
+
+
 \end{frame}
 
 %------------------------------------------------
 
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
+\begin{frame} %[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{How to use GUI}
+Una volta Creati gli Object, verranno inseriti all'interno degli appositi QListWidget (tramite iterazioni sui vector corrispondenti, fatti nella BusinessLogic che è stata precedentemente modificata con la creazione); questi Oggetti sono indicati da un indice e una volta selezionato un Object viene fatto vedere nella sezione \textit{Details} i rispettivi dettagli, inoltre è possibile vedere la corrispondente lunghezza in cm o inch.
+
+   \FloatBarrier
+   \begin{figure}[ht]
+   \centering
+   \includegraphics[scale=0.10]{Calcolo.png}
+   \caption{Calculate Object}
+\end{figure}
+
+Una volta selezionato un Object da un QListWidget è possibile aggiungerlo tramite uno dei QpushButton "add here", una volta aggiunti due Object, sarà possibile cliccare su un "QRadioButton" per selezionare l'operazione e avviare execute tramite il pulsante "=", se l'operazione sarà possibile tra i due tipi di Object verrà fatto vedere il risultato, altrimenti apparira un "QMessageBox" rappresentante il tipo di errore.
+
+
+
 \end{frame}
 
 %------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
+\section{Caratteristiche kalc}
 \begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
+\frametitle{Caratteristiche}
+\begin{itemize}
+\item Polimorfismo è intrinseco nel Progetto
+\begin{itemize}
+\item operatori virtuali puri in Space, a run time verranno chiamati quelli ridefiniti nelle classi concrete.
+\item getStatus funzione virtuale ridefinita in tutte le classi, a run time verrà aggiornato in base al tipo dinamico dell'Object su cui è stata invocata la funzione.
+\item Unico modo in cui faccio \textit{RTTI} è tramite cast dinamico.
 
-%------------------------------------------------
+%Unico modo in cui faccio \textit{RTTI} è tramite "dynamic_cast".
+\end{itemize}
 
-\begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+\item Gli errori sono gestiti in due modi:
+\begin{itemize}
+\item per la parte Logica è stata creata un classe di eccezioni che vengono sollevate qual'ora le operazioni di 2 Object, invocate tramite execute(), non fossero possibili, inoltre sono stati fatti controlli preventivi per prevenire chiamate incomplete.
+\item per la parte Grafica sono stati inseriti controlli preventivi, e qual'ora la correttezza dell'inserimento dei dati o l'operazione selezionata non fossero possibili, verrà visualizzato un QMessageBox all'interno del quale sarà descritto il tipo di errore. 
+
+\end{itemize}
+
+\end{itemize}
 %\begin{figure}
 %\includegraphics[width=0.8\linewidth]{test}
 %\end{figure}
@@ -222,39 +257,20 @@ Uncomment the code on this slide to include your own image from the same directo
 
 %------------------------------------------------
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
-\section{Design Pattern}
 \begin{frame}
-\frametitle{Design Pattern}
-Strategy (do là possibilità di implementare con altri tipi di algoritmi i colori, facendo in modo che l'unica cosa disponibile a tutti sia l'interfaccia)
+\frametitle{Caratteristiche}
+\begin{itemize}
+\item La gestione della memoria è minoritaria in questo caso, poichè l'applicazione non fa uso pesante della memoria, l'unica cosa che viene allocata e modificata è la BusinessLogic nella GUI, ma quest'ultima non viene ricreata, ma viene passata attraverso tutte le varie componenti e modificata.
+Mentre la Table che tiene visibili e aggiornati gli Object presenti nella BusinessLogic, viene ogni volta distrutta e ricreata.
 
-\end{frame}
+\item \textit{Design Pattern} utilizzato è MVVM (Model View ViewModel) Questo pattern propone un ruolo più attivo della View rispetto a MVC: la View è in grado di gestire eventi, eseguire operazioni ed effettuare il data-binding. In questo contesto, quindi, alcune delle funzionalità del Controller vengono inglobate nella View, la quale si appoggia su un’estensione del Model.
 
-%---------------------------------------------------
-
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
+\item Le ore rendicontate per lo svolgimento del Progetto sono pari a \textbf{50}, suddivise tra analisi dei Requisiti, decisioni progettuali, codifica, stesura relazione, trascrizione in Java, verifica e accettazione complessiva.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
-\begin{frame}
-\Huge{\centerline{The End}}
-\end{frame}
 
 %----------------------------------------------------------------------------------------
 

@@ -6,8 +6,8 @@
 \headcommand {\sectionentry {1}{Introduzione}{3}{Introduzione}{0}}
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Cos'\IeC {\`e} Kalc?}}\headcommand {\beamer@subsectionpages {3}{2}}
-\headcommand {\slideentry {1}{1}{1}{3/3}{Cos'\IeC {\`e} Kalc?}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Cos'\IeC {\`e} Kalk?}}\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{Cos'\IeC {\`e} Kalk?}{0}}
 \headcommand {\beamer@framepages {3}{3}}
 \headcommand {\sectionentry {2}{Model}{4}{Model}{0}}
 \headcommand {\beamer@sectionpages {3}{3}}
@@ -23,25 +23,20 @@
 \headcommand {\beamer@subsectionpages {4}{6}}
 \headcommand {\slideentry {3}{0}{1}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {3}{0}{2}{8/8}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{8}{How to use}}\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {3}{1}{1}{8/8}{How to use}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {3}{0}{3}{9/9}{}{0}}
+\headcommand {\slideentry {3}{1}{2}{9/9}{How to use}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {3}{0}{4}{10/10}{}{0}}
+\headcommand {\sectionentry {4}{Caratteristiche kalc}{10}{Caratteristiche kalc}{0}}
+\headcommand {\beamer@sectionpages {7}{9}}
+\headcommand {\beamer@subsectionpages {8}{9}}
+\headcommand {\slideentry {4}{0}{1}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {3}{0}{5}{11/11}{}{0}}
+\headcommand {\slideentry {4}{0}{2}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\sectionentry {4}{Design Pattern}{12}{Design Pattern}{0}}
-\headcommand {\beamer@sectionpages {7}{11}}
-\headcommand {\beamer@subsectionpages {7}{11}}
-\headcommand {\slideentry {4}{0}{1}{12/12}{}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {4}{0}{2}{13/13}{}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {4}{0}{3}{14/14}{}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@partpages {1}{14}}
-\headcommand {\beamer@subsectionpages {12}{14}}
-\headcommand {\beamer@sectionpages {12}{14}}
-\headcommand {\beamer@documentpages {14}}
-\headcommand {\def \inserttotalframenumber {14}}
+\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\beamer@subsectionpages {10}{11}}
+\headcommand {\beamer@sectionpages {10}{11}}
+\headcommand {\beamer@documentpages {11}}
+\headcommand {\def \inserttotalframenumber {11}}

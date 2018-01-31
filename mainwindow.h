@@ -29,14 +29,14 @@ private:
         QAction* Add_Obj2D;
         QAction* Add_Obj3D;
         QAction* Add_Color;
+        BusinessLogic* bu;
 
 
 
 
 public:
     MainWindow(QWidget *parent = 0);
-    QWidget* pos;
-    BusinessLogic* bu;
+
 
 
 
