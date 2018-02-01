@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <QWidget>
 #include <QApplication>
 #include <QCloseEvent>
 #include <QMenuBar>
@@ -35,7 +34,7 @@ private:
 
 
 public:
-    MainWindow(QWidget *parent = 0);
+    MainWindow(MainWindow *parent = 0);
 
 
 

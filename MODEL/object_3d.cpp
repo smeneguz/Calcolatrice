@@ -269,8 +269,8 @@ double Object_3D::getHInch() const
 
 void Object_3D::setDCm(double d)
 {
-    depth = static_cast<int> (Space::dpi*(d/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
-    if ((Space::dpi*(d/2.54))-depth > 0) depth++; // Arrotondo per eccesso
+    depth = static_cast<int> (dpi*(d/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
+    if ((dpi*(d/2.54))-depth > 0) depth++; // Arrotondo per eccesso
 }
 
 double Object_3D::getDCm() const
@@ -282,8 +282,8 @@ double Object_3D::getDCm() const
 
 void Object_3D::setDInch(double d)
 {
-    depth = static_cast<int> (Space::dpi*d);
-    if ((Space::dpi*d)-depth > 0) depth++; // Arrotondo per eccesso
+    depth = static_cast<int> (dpi*d);
+    if ((dpi*d)-depth > 0) depth++; // Arrotondo per eccesso
 }
 
 double Object_3D::getDInch() const

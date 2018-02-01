@@ -14,15 +14,22 @@ public class Object_2D extends Space  {
 		super();
 		length=l;
 	}
-	
-	public Object_2D(int l, int risol) {
-		super(risol);
+	public Object_2D(int l, int h) {
+		super();
 		length=l;	
+		height = h;
 	}
 	
-	public Object_2D(int l, int risol, RGBHex c) {
+	public Object_2D(int l,int h,  int risol) {
+		super(risol);
+		length=l;	
+		height = h;
+	}
+	
+	public Object_2D(int l, int h, int risol, RGBHex c) {
 		super(risol, c);
 		length=l;
+		height = h;
 	}
 	
 	public Status getStatus() 
@@ -60,7 +67,7 @@ public class Object_2D extends Space  {
 	    if ((dpi*(h/2.54))-height > 0) height++; // Arrotondo per eccesso
 	}
 
-	private int getHeight() {
+	int getHeight() {
 		return height;
 	}
 	void setHeight(int h)
