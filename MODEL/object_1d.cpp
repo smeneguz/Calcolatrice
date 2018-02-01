@@ -15,7 +15,7 @@ int Object_1D::CalcolaSuperficie()
 
 Status Object_1D::getStatus() const
 {
-    Status s = Space::getStatus();
+    Status s = getStatus();
     //sistemare lunghezza
     s.l = this->getLength();
     s.lCm = this->getLCm();
@@ -130,21 +130,21 @@ Object_1D& Object_1D::operator/(const RGBHex &x)
 
 void Object_1D::setLCm(double l)
 {
-    length = static_cast<int> (Space::dpi*(l/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
-    if ((Space::dpi*(l/2.54))-length > 0) length++; // Arrotondo per eccesso
+    length = static_cast<int> (dpi*(l/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
+    if ((dpi*(l/2.54))-length > 0) length++; // Arrotondo per eccesso
 }
 
 double Object_1D::getLCm() const
 {
     double a = static_cast<double>(length);
-    double b = static_cast<double>(Space::dpi);
+    double b = static_cast<double>(dpi);
     return ((a/b)*2.54);
 }
 
 void Object_1D::setLInch(double l)
 {
-    length = static_cast<int> (Space::dpi*l);
-    if ((Space::dpi*l)-length > 0) length++; // Arrotondo per eccesso
+    length = static_cast<int> (dpi*l);
+    if ((dpi*l)-length > 0) length++; // Arrotondo per eccesso
 }
 
 double Object_1D::getLInch() const

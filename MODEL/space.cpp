@@ -50,4 +50,4 @@ Status Space::getStatus() const
 
 
 
-Space::~Space(){}
+//Space::~Space(){}

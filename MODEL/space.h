@@ -17,7 +17,7 @@ public:
     virtual int getLength() const = 0;
 
     //space è una classe astratta e quindi l'utilizzo dei costruttori sarà utile solo per la costruzione del sottoogetto -> non ci sarà mai un'istanza di space
-    virtual ~Space();
+    //virtual ~Space(); eredito da Obbject
     Space();
     Space(int d);
     Space(int d, RGBHex c);

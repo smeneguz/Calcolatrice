@@ -10,17 +10,20 @@ class RGBHex : public Object{
 private:
     int color;
     static const char c[];
-    // Questa funione serve solo per pulire una stringa e mantenere solo i caratteri esadecimali
-    // Inoltre, posso scegliere tramite intero n quanti caratteri mantenere (a partire dal FONDO della stringa)
-    static std::string puliStringa(std::string s, int n=6);
-    // Questa funzione serve a convertire gli ultimi n caratteri di una stringa esadecimale in intero
-    static int valueOf(std::string c, int n);
+    // Questa funione serve solo per pulire una stringa e mantenere solo i charatteri esadecimali
+    // Inoltre, posso scegliere tramite intero n quanti charatteri mantenere (a partire dal FONDO della stringa)
+    static std::string pulisciS(std::string s, int n=6);
+    // Questa funzione serve a convertire gli ultimi n charatteri di una stringa esadecimale in intero
+    static int valoreS(std::string c, int n);
 public:
 
 
     RGBHex();
+    //costruttore tramite stringa
     RGBHex(std::string c);
+    //costruttore tr amite 3 int
     RGBHex(int r, int g, int b);
+
     //virtual ~RGBHex(); non devo metterlo perchè fa la distruzione di default di un primitivo int
 
     //metodi set e get
@@ -33,6 +36,8 @@ public:
     void setR(std::string r);
     void setG(std::string g);
     void setB(std::string b);
+
+    //get r g b string
     std::string getR() const;
     std::string getG() const;
     std::string getB() const;
@@ -41,9 +46,13 @@ public:
     void setRint(int r); // 0<r<255
     void setGint(int g); // 0<g<255
     void setBint(int b); // 0<b<255
+
+    //get r g b
     int getRint() const; // return x| 0<x<255
     int getGint() const; // return x| 0<x<255
     int getBint() const; // return x| 0<x<255
+
+    //status di RGBhex
     virtual Status getStatus() const;
 
 

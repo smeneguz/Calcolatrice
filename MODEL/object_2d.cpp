@@ -195,14 +195,14 @@ double Object_2D::getLInch() const
 
 void Object_2D::setHCm(double h)
 {
-    height = static_cast<int> (Space::dpi*(h/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
-    if ((Space::dpi*(h/2.54))-height > 0) height++; // Arrotondo per eccesso
+    height = static_cast<int> (dpi*(h/2.54)); // l/2.54 serve per convertire la lunghezza l da cm a pollici
+    if ((dpi*(h/2.54))-height > 0) height++; // Arrotondo per eccesso
 }
 
 double Object_2D::getHCm() const
 {
     double a = static_cast<double>(height);
-    double b = static_cast<double>(Space::dpi);
+    double b = static_cast<double>(dpi);
     return ((a/b)*2.54);
 }
 
