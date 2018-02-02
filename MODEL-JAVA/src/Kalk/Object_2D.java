@@ -34,7 +34,7 @@ public class Object_2D extends Space  {
 	
 	public Status getStatus() 
 	{
-	    Status s = getStatus();
+	    Status s = super.getStatus();
 	    //sistemare lunghezza
 	    s.l = this.getLength();
 	    s.lCm = this.getLCm();
@@ -133,7 +133,7 @@ public class Object_2D extends Space  {
 
 	@Override
 	Object_2D mult(RGBHex x) {
-	    this.setColor(x);
+	    this.setColor(col);
 	    return this;
 	}
 
@@ -158,6 +158,7 @@ public class Object_2D extends Space  {
 	        this.setLength(val);
 	        this.setHeight(valh);
 	        this.setRisoluzione(a.getRisoluzione()); //la somma ritorna semplicemente la risoluzione del parametro passato
+	        super.col = super.col.sum( x.col);
 	        return this;
 	    }
 	    //non fa niente in questo caso se non è del tipo giusto
@@ -175,6 +176,7 @@ public class Object_2D extends Space  {
 	        if(valh <= 0) valh = 1;
 	        this.setLength(val);
 	        this.setHeight(valh);
+	        super.col = super.col.sub( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la sottrazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -191,6 +193,7 @@ public class Object_2D extends Space  {
 	        this.setLength(val);
 	        this.setHeight(valh);
 	        this.setRisoluzione(a.getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
+	        super.col = super.col.sum( x.col);
 	        return this;
 	    }
 	    if(x instanceof Object_1D)
@@ -198,6 +201,7 @@ public class Object_2D extends Space  {
 	    	Object_1D a = (Object_1D) x;
 	        int val = this.getLength() * a.getLength();
 	        this.setLength(val);
+	        super.col = super.col.sum( x.col);
 	        return this;
 	    }
 	    throw new Exceptions("Object2D non può moltiplicarsi con tipi diversi di space (eccetto se stesso e Object_1D)");
@@ -214,6 +218,7 @@ public class Object_2D extends Space  {
 	        if(valh <= 0) valh = 1;
 	        this.setLength(val);
 	        this.setHeight(valh);
+	        super.col = super.col.sub( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -223,6 +228,7 @@ public class Object_2D extends Space  {
 	        int val = this.getLength() / a.getLength(); 
 	        if(val <=0) val = 1;        
 	        this.setLength(val);
+	        super.col = super.col.sub( x.col);
 	        return this;
 	    }
 

@@ -15,7 +15,7 @@ int Object_1D::CalcolaSuperficie()
 
 Status Object_1D::getStatus() const
 {
-    Status s = getStatus();
+    Status s = Space::getStatus();
     //sistemare lunghezza
     s.l = this->getLength();
     s.lCm = this->getLCm();

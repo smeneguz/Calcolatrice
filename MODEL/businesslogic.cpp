@@ -35,7 +35,7 @@ Object *BusinessLogic::getSelezione() const
 void BusinessLogic::newObj1D(int l, int r)
 {
     Object_1D* o1 = new Object_1D(l,r);
-    BusinessLogic::monodimensionale.push_back(o1);
+    monodimensionale.push_back(o1);
 }
 
 void BusinessLogic::newObj2D(int l, int h, int r)
@@ -126,6 +126,7 @@ void BusinessLogic::setOperator(int o)
     operatore = o;
 }
 
+
 void BusinessLogic::insertFirstSpace(Object *o)
 {
     op1 = o;
@@ -141,15 +142,16 @@ void BusinessLogic::setSelezione(Object *o)
     selezione = o;
 }
 
-void BusinessLogic::setOp1(Object *o) //si ripettono da vedere se serve
+void BusinessLogic::setOp1(Object *o)
 {
     op1 = o;
 }
 
-void BusinessLogic::setOp2(Object *o) //si ripettono da vedere se serve
+void BusinessLogic::setOp2(Object *o)
 {
     op2 = o;
 }
+
 
 void BusinessLogic::esegui()
 {
@@ -601,10 +603,9 @@ RGBHex BusinessLogic::sottrazione(RGBHex &c, Object_2D &o)
     return b;
 }
 
-RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_2D &o)
+RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_2D &)
 {
-    RGBHex b = RGBHex(o.getColor().getColor());
-    return b;
+     throw Ecc_RGBHex_moltiplicazione_Object();
 }
 
 RGBHex BusinessLogic::divisione(RGBHex &, Object_2D &)
@@ -630,10 +631,9 @@ RGBHex BusinessLogic::sottrazione(RGBHex &c, Object_3D &o)
     return b;
 }
 
-RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_3D &o)
+RGBHex BusinessLogic::moltiplicazione(RGBHex &, Object_3D &)
 {
-    RGBHex b = RGBHex(o.getColor().getColor());
-    return b;
+    throw Ecc_RGBHex_moltiplicazione_Object();
 }
 
 RGBHex BusinessLogic::divisione(RGBHex &, Object_3D &)

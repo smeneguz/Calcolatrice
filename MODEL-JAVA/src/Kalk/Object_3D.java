@@ -45,7 +45,7 @@ public class Object_3D extends Space{
 	
 	public Status getStatus() 
 	{
-	    Status s = getStatus();
+	    Status s = super.getStatus();
 	    //sistemare lunghezza
 	    s.l = this.getLength();
 	    s.lCm = this.getLCm();
@@ -64,7 +64,7 @@ public class Object_3D extends Space{
 	    depth=d;
 	}
 	
-	private int getDepth() {
+	int getDepth() {
 	    return depth;
 	}
 	
@@ -116,7 +116,7 @@ void setDInch(double d)
 	    if ((dpi*(h/2.54))-height > 0) height++; // Arrotondo per eccesso
 	}
 
-	private int getHeight() {
+	int getHeight() {
 		return height;
 	}
 	void setHeight(int h)
@@ -182,7 +182,7 @@ void setDInch(double d)
 
 	@Override
 	Object_3D mult(RGBHex x) {
-	    this.setColor(x);
+	    this.setColor(col);
 	    return this;
 	}
 
@@ -208,6 +208,7 @@ void setDInch(double d)
 	        this.setLength(val);
 	        this.setHeight(valh);
 	        this.setDepth(vald);
+	        super.col = super.col.sum( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la somma ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -229,6 +230,7 @@ void setDInch(double d)
 	        this.setLength(val);
 	        this.setHeight(valh);
 	        this.setDepth(vald);
+	        super.col = super.col.sub( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la sottrazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -246,6 +248,7 @@ void setDInch(double d)
 	        this.setLength(val);
 	        this.setHeight(valh);
 	        this.setDepth(vald);
+	        super.col = super.col.sum( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -256,6 +259,7 @@ void setDInch(double d)
 	        int valh = this.getHeight() * a.getHeight();
 	        this.setLength(val);
 	        this.setHeight(valh);
+	        super.col = super.col.sum( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -264,6 +268,7 @@ void setDInch(double d)
 	    	Object_1D a = (Object_1D) x;
 	        int val = this.getLength() * a.getLength();
 	        this.setLength(val);
+	        super.col = super.col.sum( x.col);
 	        return this;
 	    }
 	    throw new Exceptions("Object3D non può moltiplicarsi con tipi diversi di space (eccetto se stesso e Object_1D e Object2D)");
@@ -283,6 +288,7 @@ void setDInch(double d)
 	        this.setLength(val);
 	        this.setHeight(valh);
 	        this.setDepth(vald);
+	        super.col = super.col.sub( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -295,6 +301,7 @@ void setDInch(double d)
 	        if(valh <= 0) valh = 1;
 	        this.setLength(val);
 	        this.setHeight(valh);
+	        super.col = super.col.sub( x.col);
 	        this.setRisoluzione(a.getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
 	        return this;
 	    }
@@ -304,6 +311,8 @@ void setDInch(double d)
 	        int val = this.getLength() / a.getLength(); 
 	        if(val <=0) val = 1;        
 	        this.setLength(val);
+	        super.col = super.col.sub( x.col);
+
 	        return this;
 	    }
 

@@ -3,6 +3,7 @@ package Kalk;
 public class RGBHex extends ObjectO {
 	private int color = 0;
 	private static final char c[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+	
 	private static String pulisciS (String s, int n) {
 		String inputM = s;
 		String input = "";

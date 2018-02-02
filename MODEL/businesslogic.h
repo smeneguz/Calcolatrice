@@ -71,13 +71,13 @@ public:
     // RGBHex && oggetto2D
     static RGBHex somma(RGBHex& c, Object_2D& o);
     static RGBHex sottrazione(RGBHex& c, Object_2D& o);
-    static RGBHex moltiplicazione(RGBHex& , Object_2D& o);
+    static RGBHex moltiplicazione(RGBHex& , Object_2D&);
     static RGBHex divisione(RGBHex& , Object_2D& );
 
     // RGBHex && oggetto3D
     static RGBHex somma(RGBHex& c, Object_3D& o);
     static RGBHex sottrazione(RGBHex& c, Object_3D& o);
-    static RGBHex moltiplicazione(RGBHex&, Object_3D& o);
+    static RGBHex moltiplicazione(RGBHex&, Object_3D&);
     static RGBHex divisione(RGBHex& , Object_3D& );
 
 };
