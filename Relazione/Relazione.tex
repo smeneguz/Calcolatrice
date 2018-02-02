@@ -1,5 +1,5 @@
 
-
+\newcommand{\sommario}[1]{\gdef\@sommario{#1}}
 
 \documentclass[10pt]{beamer}
 
@@ -75,7 +75,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Space Kalc]{Qt Kalk} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Space Kalk]{Qt Kalk} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Silvio Meneguzzo \\ matricola: 1097458 } % Your name
 \institute[Unipd] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -86,6 +86,8 @@ Università di Padova - Dipartimento di Matematica \\ % Your institution for the
 \textit{meneguzzosilvio@gmail.com} % Your email address
 }
 \date{23 Gennaio 2018} % Date, can be changed to a custom date
+\medskip
+\sommario{ ddddd }
 
 \begin{document}
 
@@ -94,10 +96,10 @@ Università di Padova - Dipartimento di Matematica \\ % Your institution for the
 \end{frame}
 
 %da toglire una volta finita la relazione
-\begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose %to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose %to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -112,11 +114,13 @@ Università di Padova - Dipartimento di Matematica \\ % Your institution for the
 \begin{frame}
 \frametitle{Cos'è Kalk?}
 Kalk è una calcolatrice che opera su tipi di dati non banali. \\
-Questo progetto sviluppato durante il corso \textit{Programmazione ad oggetti} ha lo scopo di creare un applicativo che possa essere un buon esempio di programmazione ad Oggetti. \\
+Questo progetto, sviluppato durante il corso \textit{Programmazione ad oggetti}, ha lo scopo di creare un applicativo che possa essere un buon esempio di programmazione ad Oggetti. \\
 Kalc mette a disposizione i classici operatori quali somma, sottrazione, moltiplicazione e divisione; la vera svolta sta nei tipi di dato che rappresentano tipi dimensionali colorati. \\
-Ci sono 4 diversi tipi di dati tra cui è possibile svolgere operazioni; questi sono: ogetti ad una dimensione, oggeti a due dimensioni, oggetti a tre dimensioni e un oggetto RGBHex color che rappresenta un colore.
-Ognuno di essi ha un campo dpi che determina la definizione di stampa, inoltre la calcolatrice agisce anche da convertitore tra pixel, cm e inch. \\
-Per quanto concerne la parte di \textbf{compilazione}, quest'ultima sarà fatta eseguendo qmake sul file.pro presente all'interno della repository, dopodichè make.
+Ci sono 4 diversi tipi di dati tra cui è possibile svolgere operazioni; questi sono: oggetti ad una dimensione, oggetti a due dimensioni, oggetti a tre dimensioni e un oggetto RGBHex color che rappresenta un colore.
+Ognuno di essi ha un campo \textit{dpi} che determina la definizione di stampa, inoltre la calcolatrice agisce anche da convertitore tra pixel, cm e inch. \\
+Per quanto concerne la parte di \textbf{compilazione}, quest'ultima sarà fatta eseguendo qmake sul file.pro presente all'interno della repository consegnata, dopodichè make.
+La parte riguardante \textbf{JAVA} è contenuta all'interno della repository \textit{MODEL-JAVA}.
+
 
 %\begin{itemize}
 %\item[Object1] che consiste in un
@@ -133,9 +137,16 @@ Per quanto concerne la parte di \textbf{compilazione}, quest'ultima sarà fatta 
    \FloatBarrier
    \begin{figure}[ht]
    \centering
-   \includegraphics[scale=0.30]{Gerarchia.png}
+   \includegraphics[scale=0.20]{Gerarchia.png}
    \caption{Gerarchia della parte Logica}
 \end{figure}
+
+Ambiente di sviluppo:
+\begin{itemize}
+\item Sistema operativo: Ubuntu 15.10 32-bit
+\item Compilatore: GCC 5.2.1
+\item Versione libreria Qt : 5.3
+\end{itemize}
 
 
 \end{frame}
@@ -145,9 +156,9 @@ Per quanto concerne la parte di \textbf{compilazione}, quest'ultima sarà fatta 
 \begin{frame}
 \frametitle{Classi Model}
 \begin{itemize}
-\item \textbf{Object} rappresenta una classe da cui deriva tutta la gerarchia, cosichè quando la \textit{BusinessLogic} andrà a fare operazioni sugli Object inseriti, a run time, eseguirà le operazioni esatte ed a aggiornerà lo \textit{Status} in modo adatto in base al tipo dinamico dell'Object selezionato.
+\item \textbf{Object} rappresenta una classe dalla quale deriva tutta la gerarchia, cosicchè quando la \textit{BusinessLogic} andrà a fare operazioni sugli Object inseriti, a run time, eseguirà le operazioni esatte ed a aggiornerà lo \textit{Status} in modo adatto in base al tipo dinamico dell'Object selezionato.
 \item \textbf{Space} classe Astratta rappresentante un Oggetto dimensionale avente un colore e una definizione di stampa (dpi), da cui poi ereditano \textit{Object1D}, \textit{Object2D} e \textit{Object3D}.
-\item \textbf{Object1D} classe concreta che estende Space, possiede una lunghezza che determina se lo spazio dimensionale corrisponde a un punto unidimensionale (length=1) oppure un segmento.
+\item \textbf{Object1D} classe concreta che estende Space, possiede una lunghezza che determina se lo spazio dimensionale corrisponde ad un punto unidimensionale (length=1) oppure ad un segmento.
 \item \textbf{Object2D} classe concreta che estende Space, possiede una lunghezza e una altezza e rappresenta un sottoinsieme del piano cartesiano (oggetto bidimensionale).
 \item \textbf{Object3D} classe concreta che estende Space, possiede una lunghezza, una altezza e una profondità e rappresenta un ogetto tridimensionale. 
 
@@ -162,12 +173,12 @@ Per quanto concerne la parte di \textbf{compilazione}, quest'ultima sarà fatta 
 \begin{frame}
 \frametitle{Classi Model}
 \begin{itemize}
-\item \textbf{RGBHex} classe concreta che deriva da Object, rappresenta un Colore RGB, costruibile tramite stringa (colore essadecimale), valori interi R G B.
-Questa classe copre semplicemente il ruolo di colorare \textit{Object} e potenzialmente anche di interagire tramite operazioni su soli oggetti \textit{RGBHex}.
+\item \textbf{RGBHex} classe concreta derivante da Object. Rappresenta un Colore RGB, costruibile tramite stringa (colore essadecimale) oppure tramite valori interi R G B.
+Questa classe svolge il compito colorare \textit{Object} e, potenzialmente, anche di interagire tramite operazioni su soli oggetti \textit{RGBHex}.
 
 \item \textbf{Status} è una classe che svolge il ruolo di trasportatore; la classe Status è intrinseca in ogni classe derivante da Object, in quanto essa va ridefinita in base ai campi dati di quella classe. 
 
-\item \textbf{BusinessLogic} è la classe che racchiude tutta la logica, tramite la funzione esegui che verrà richiamata dalla GUI con l'operatore "=" a run-time verrà scelto l'operazione adeguata ai tipi, inoltre fa da tramite con la GUI per tutto ciò che concerne la parte di Model.
+\item \textbf{BusinessLogic} è la classe che racchiude tutta la logica, tramite la funzione esegui, che verrà richiamata dalla GUI con l'operatore "=", a run-time verrà scelto l'operazione adeguata ai tipi, inoltre fa da tramite con la GUI per tutto ciò che concerne la parte di Model.
 \item \textbf{Exceptions} è la classe che contiene le classi di eccezioni che possono essere sollevate.
 \end{itemize}
 \end{frame}
@@ -182,7 +193,7 @@ La GUI (Graphical User Interface) è strutturata:
 \begin{enumerate}
 \item MainWindow, da cui parte la creazione della BusinessLogic che a cascata verrà passata a tutti i sotto oggetti che comporranno il QGridLayout generale della calcolatrice, dopodichè viene costruito \textit{Contenitore}, che rappresenta, a tutti gli effetti, il layout generale di \textit{Space kalc}.
 
-\item Contenitore, è la classe che crea effettivamente gli oggetti che permetterano la creazione di Object (tramite CreateObject), la selezione degli Object su cui si vuole fare operazioni (tramite Table) e infine la parte di calcolo (Calculate) che consentirà dopo aver inserito due Object tramite i QpushButton "add here", di selezionare un operatore e fare i dovuti calcoli.
+\item Contenitore, è la classe che crea effettivamente gli oggetti che permetterano la creazione di Object (tramite CreateObject), la selezione degli Object su cui si vuole fare operazioni (tramite Table) e infine la parte di calcolo (Calculate) che consentirà, dopo aver inserito due Object tramite i QpushButton "add here", di selezionare un operatore e fare i dovuti calcoli.
 \end{enumerate}
 \end{frame}
 
@@ -190,7 +201,7 @@ La GUI (Graphical User Interface) è strutturata:
 \subsection{How to use} 
 \begin{frame}
 \frametitle{How to use GUI}
-Più in dettaglio vediamo le 3 componenti di Contenitore:
+Più in dettaglio le 3 componenti di Contenitore sono:
 
    \FloatBarrier
    \begin{figure}[ht]
@@ -198,7 +209,7 @@ Più in dettaglio vediamo le 3 componenti di Contenitore:
    \includegraphics[scale=0.20]{Creazione.png}
    \caption{Create Object}
 \end{figure}
-Questa zona si trova nella parte superiore della calcolatrice dentro un QMenuBar, e attraverso Create (QMenu) si apre un menu a tendina (formato da QAction) che attraveso la pressione di quest'ultimi, vengono richiamati i costruttori di Oggetti e mostrati in una Finestra che si sovrapporrà a MainWindow.
+Questa zona si trova nella parte superiore della calcolatrice, dentro un QMenuBar, e attraverso Create (QMenu) si apre un menù a tendina, formato da QAction, e attraveso la pressione di questi bottoni, verranno richiamati i costruttori degli Oggetti e mostrati in una Finestra che si sovrapporrà a MainWindow.
 
 
    \FloatBarrier
@@ -215,7 +226,7 @@ Questa zona si trova nella parte superiore della calcolatrice dentro un QMenuBar
 
 \begin{frame} %[fragile] % Need to use the fragile option when verbatim is used in the slide
 \frametitle{How to use GUI}
-Una volta Creati gli Object, verranno inseriti all'interno degli appositi QListWidget (tramite iterazioni sui vector corrispondenti, fatti nella BusinessLogic che è stata precedentemente modificata con la creazione); questi Oggetti sono indicati da un indice e una volta selezionato un Object viene fatto vedere nella sezione \textit{Details} i rispettivi dettagli, inoltre è possibile vedere la corrispondente lunghezza in cm o inch.
+Una volta Creati gli Object, verranno inseriti all'interno degli appositi QListWidget (tramite iterazioni sui vector corrispondenti, fatti nella BusinessLogic che è stata precedentemente modificata con la creazione); questi Oggetti sono indicati da un indice e una volta selezionato un Object verranno fatti vedere, nella sezione \textit{Details}, i rispettivi dettagli, inoltre è possibile vedere la corrispondente lunghezza in cm o inch.
 
    \FloatBarrier
    \begin{figure}[ht]
@@ -224,7 +235,7 @@ Una volta Creati gli Object, verranno inseriti all'interno degli appositi QListW
    \caption{Calculate Object}
 \end{figure}
 
-Una volta selezionato un Object da un QListWidget è possibile aggiungerlo tramite uno dei QpushButton "add here", una volta aggiunti due Object, sarà possibile cliccare su un "QRadioButton" per selezionare l'operazione e avviare execute tramite il pulsante "=", se l'operazione sarà possibile tra i due tipi di Object verrà fatto vedere il risultato, altrimenti apparira un "QMessageBox" rappresentante il tipo di errore.
+Una volta selezionato un Object da un QListWidget sarà possibile aggiungerlo, tramite uno dei QpushButton "add here". Una volta aggiunti due Object, sarà possibile cliccare su un "QRadioButton" per selezionare l'operazione e avviare execute tramite il pulsante "=", se l'operazione sarà possibile tra i due tipi di Object verrà fatto vedere il risultato, altrimenti apparira un "QMessageBox" rappresentante il tipo di errore.
 
 
 
@@ -239,15 +250,15 @@ Una volta selezionato un Object da un QListWidget è possibile aggiungerlo trami
 \begin{itemize}
 \item operatori virtuali puri in Space, a run time verranno chiamati quelli ridefiniti nelle classi concrete.
 \item getStatus funzione virtuale ridefinita in tutte le classi, a run time verrà aggiornato in base al tipo dinamico dell'Object su cui è stata invocata la funzione.
-\item Unico modo in cui faccio \textit{RTTI} è tramite cast dinamico.
+\item Unico modo in cui viene fatto \textit{RTTI} è tramite cast dinamico.
 
 %Unico modo in cui faccio \textit{RTTI} è tramite "dynamic_cast".
 \end{itemize}
 
 \item Gli errori sono gestiti in due modi:
 \begin{itemize}
-\item per la parte Logica è stata creata un classe di eccezioni che vengono sollevate qual'ora le operazioni di 2 Object, invocate tramite execute(), non fossero possibili, inoltre sono stati fatti controlli preventivi per prevenire chiamate incomplete.
-\item per la parte Grafica sono stati inseriti controlli preventivi, e qual'ora la correttezza dell'inserimento dei dati o l'operazione selezionata non fossero possibili, verrà visualizzato un QMessageBox all'interno del quale sarà descritto il tipo di errore. 
+\item per la parte Logica è stata creata un classe di eccezioni che verranno sollevate qualora le operazioni tra 2 Object, invocate tramite execute(), non fossero possibili, inoltre sono stati fatti controlli preventivi per prevenire chiamate incomplete.
+\item per la parte Grafica sono stati inseriti controlli preventivi, e qualora la correttezza dell'inserimento dei dati o l'operazione selezionata non fossero possibili, verrà visualizzato un QMessageBox all'interno del quale sarà descritto il tipo di errore. 
 
 \end{itemize}
 
@@ -262,8 +273,8 @@ Una volta selezionato un Object da un QListWidget è possibile aggiungerlo trami
 \begin{frame}
 \frametitle{Caratteristiche}
 \begin{itemize}
-\item La gestione della memoria è minoritaria in questo caso, poichè l'applicazione non fa uso pesante della memoria, l'unica cosa che viene allocata e modificata è la BusinessLogic nella GUI, ma quest'ultima non viene ricreata, ma viene passata attraverso tutte le varie componenti e modificata.
-Mentre la Table che tiene visibili e aggiornati gli Object presenti nella BusinessLogic, viene ogni volta distrutta e ricreata.
+\item La gestione della memoria è minoritaria in questo caso, poichè l'applicazione non fa uso pesante di essa, l'unica cosa che viene allocata e modificata è la BusinessLogic nella GUI, ma quest'ultima non viene ricreata, bensì viene passata attraverso tutte le varie componenti e modificata.
+Mentre la Table, che tiene visibili e aggiornati gli Object presenti nella BusinessLogic, viene ogni volta distrutta e ricreata.
 
 \item \textit{Design Pattern} utilizzato è MVVM (Model View ViewModel) Questo pattern propone un ruolo più attivo della View rispetto a MVC: la View è in grado di gestire eventi, eseguire operazioni ed effettuare il data-binding. In questo contesto, quindi, alcune delle funzionalità del Controller vengono inglobate nella View, la quale si appoggia su un’estensione del Model.
 

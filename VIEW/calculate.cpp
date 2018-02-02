@@ -85,23 +85,37 @@ void Calculate::setOperator()
 
 void Calculate::addOp1()
 {
+    if( log->getSelezione()  == 0){ // altrimenti bug se clicco "add here" senza aver selezionato niente
+        QMessageBox* err = new QMessageBox();
+        err->setWindowTitle(QString(tr("ERROR")));
+        err->setText(QString(tr("select an object first")));
+        err->show();
+    }
+    else {
     Object* sel = log->getSelezione();
     log->setOp1(sel); //setto l'operando selezionato come primo
     if(sel){
         Object* o1 = log->getOp1();
         QString aux = stringResult(o1); // mi ritorna una stringa rappresentante il valore dell'object passato
-        firsto->setText(aux);
+        firsto->setText(aux); }
     }
 }
 
 void Calculate::addOp2()
 {
+    if( log->getSelezione()  == 0){ // altrimenti bug se clicco "add here" senza aver selezionato niente
+        QMessageBox* err = new QMessageBox();
+        err->setWindowTitle(QString(tr("ERROR")));
+        err->setText(QString(tr("select an object first")));
+        err->show();
+    }
+    else{
     Object* sel = log->getSelezione();
     log->setOp2(sel); //setto l'operando selezionato come secondo
     if(sel){
         Object* o2 = log->getOp2();
         QString aux = stringResult(o2); // mi ritorna una stringa rappresentante il valore dell'object passato
-        secondo->setText(aux);
+        secondo->setText(aux); }
     }
 }
 

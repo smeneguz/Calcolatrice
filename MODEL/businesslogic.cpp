@@ -5,6 +5,7 @@ BusinessLogic::BusinessLogic() {
     op2=0;
     risultato=0;
     operatore=-1; //nessuno
+    selezione = 0; // altrimenti bug se clicco "add here" senza aver selezionato niente
 }
 
 Status BusinessLogic::getStatus(const Object &o) const

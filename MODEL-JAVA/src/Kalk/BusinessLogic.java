@@ -24,6 +24,7 @@ public class BusinessLogic {
 	    op2=null;
 	    risultato=null;
 	    operatore=-1; //nessuno
+	    selezione = null;
 		
 	}
 	

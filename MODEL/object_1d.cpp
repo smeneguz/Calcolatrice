@@ -41,6 +41,7 @@ Object_1D& Object_1D::operator+(const Space &x)
         int val = this->getLength() + a->getLength();
         this->setLength(val);
         this->setRisoluzione(a->getRisoluzione()); //la somma ritorna semplicemente la risoluzione del parametro passato
+        Space::col = col + x.getColor();
         return *this;
     }
     //non fa niente in questo caso se non è del tipo giusto
@@ -58,6 +59,7 @@ Object_1D& Object_1D::operator-(const Space &x)
         if(val <=0) val = 1;
         this->setLength(val);
         this->setRisoluzione(a->getRisoluzione()); //la sottrazione ritorna semplicemente la risoluzione del parametro passato
+        Space::col = col - x.getColor();
         return *this;
     }
     throw Ecc_Object1D_sottrazione_ObjectDiverso();
@@ -71,6 +73,7 @@ Object_1D& Object_1D::operator*(const Space &x) //questo operatore viene chiamat
         int val = this->getLength() * a->getLength();
         this->setLength(val);
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
+        Space::col = col + x.getColor();
         return *this;
     }
     throw Ecc_Object1D_moltiplicazione_ObjectDiverso();
@@ -87,6 +90,7 @@ Object_1D& Object_1D::operator/(const Space &x)
         int val = this->getLength() / a->getLength();
         if(val <=0) val = 1;
         this->setLength(val);
+        Space::col = col - x.getColor();
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }

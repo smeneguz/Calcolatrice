@@ -3,6 +3,9 @@
 Contenitore::Contenitore(BusinessLogic *l, QWidget *parent) : QWidget(parent)
 {
 
+
+
+
     log = l;
 
     struttura = new QGridLayout(this);

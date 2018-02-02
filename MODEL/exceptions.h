@@ -1,5 +1,9 @@
 #ifndef EXCEPTIONS_H
 #define EXCEPTIONS_H
+#include<iostream>
+#include <string>
+
+
 
 //ECC OGGETTI 1D
 class Ecc_Object1D_somma_ObjectDiverso{};

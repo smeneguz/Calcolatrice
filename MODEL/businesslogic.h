@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <typeinfo>
+#include<exception>
 
 class BusinessLogic{
 private:

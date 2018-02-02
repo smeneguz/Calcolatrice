@@ -1,7 +1,7 @@
 \beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{Introduzione}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Cos'\IeC {\`e} Kalk?}{3}{0}{1}
-\beamer@sectionintoc {2}{Model}{4}{0}{2}
-\beamer@sectionintoc {3}{GUI}{7}{0}{3}
-\beamer@subsectionintoc {3}{1}{How to use}{8}{0}{3}
-\beamer@sectionintoc {4}{Caratteristiche kalc}{10}{0}{4}
+\beamer@sectionintoc {1}{Introduzione}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Cos'\IeC {\`e} Kalk?}{2}{0}{1}
+\beamer@sectionintoc {2}{Model}{3}{0}{2}
+\beamer@sectionintoc {3}{GUI}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{How to use}{7}{0}{3}
+\beamer@sectionintoc {4}{Caratteristiche kalc}{9}{0}{4}

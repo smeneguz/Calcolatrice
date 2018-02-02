@@ -77,6 +77,7 @@ Object_3D &Object_3D::operator+(const Space &x)
         this->setLength(val);
         this->setHeight(valh);
         this->setDepth(vald);
+        Space::col = col + x.getColor();
         this->setRisoluzione(a->getRisoluzione()); //la somma ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
@@ -99,6 +100,7 @@ Object_3D &Object_3D::operator-(const Space &x)
         this->setLength(val);
         this->setHeight(valh);
         this->setDepth(vald);
+        Space::col = col - x.getColor();
         this->setRisoluzione(a->getRisoluzione()); //la sottrazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
@@ -118,6 +120,7 @@ Object_3D &Object_3D::operator*(const Space &x)
         this->setLength(val);
         this->setHeight(valh);
         this->setDepth(vald);
+        Space::col = col + x.getColor();
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
@@ -128,6 +131,7 @@ Object_3D &Object_3D::operator*(const Space &x)
         int valh = this->getHeight() * b->getHeight();
         this->setLength(val);
         this->setHeight(valh);
+        Space::col = col + x.getColor();
         this->setRisoluzione(b->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
@@ -137,6 +141,7 @@ Object_3D &Object_3D::operator*(const Space &x)
         //un oggetto 3 dimensioni moltiplicato per un oggetto a una dimensione dimensione ritorna l'oggetto stesso con la lunghezza moltiplicata
         int val = this->getLength() * c->getLength();
         this->setLength(val);
+        Space::col = col + x.getColor();
         return *this;
     }
     throw Ecc_Object3D_moltiplicazione_ObjectDiverso();
@@ -156,6 +161,7 @@ Object_3D &Object_3D::operator/(const Space &x)
         this->setLength(val);
         this->setHeight(valh);
         this->setDepth(vald);
+        Space::col = col - x.getColor();
         this->setRisoluzione(a->getRisoluzione()); //la moltiplicazione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
@@ -168,6 +174,7 @@ Object_3D &Object_3D::operator/(const Space &x)
         if(valh <= 0) valh = 1;
         this->setLength(val);
         this->setHeight(valh);
+        Space::col = col - x.getColor();
         this->setRisoluzione(b->getRisoluzione()); //la divisione ritorna semplicemente la risoluzione del parametro passato
         return *this;
     }
@@ -178,6 +185,7 @@ Object_3D &Object_3D::operator/(const Space &x)
         int val = this->getLength() / c->getLength();
         if(val <=0) val = 1;
         this->setLength(val);
+        Space::col = col - x.getColor();
         return *this;
     }
     throw Ecc_Object3D_divisione_ObjectDiverso();
