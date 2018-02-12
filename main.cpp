@@ -13,6 +13,10 @@ int main(int argc, char *argv[])
 
 
     MainWindow m;
+
+    m.setWindowTitle("Space Kalk");
+    m.setWindowIcon(QIcon(":/img/icon.png"));
+
     m.show();
 
 

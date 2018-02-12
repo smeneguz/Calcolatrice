@@ -5,8 +5,7 @@
 
 MainWindow::MainWindow(MainWindow *parent) : QMainWindow(parent) {
 
-    setWindowTitle(tr("Space Kalk"));
-    setWindowIcon(QIcon(":/img/Kalk.png"));
+
 
 
     bu = new BusinessLogic();

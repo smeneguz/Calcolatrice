@@ -59,7 +59,7 @@ void BusinessLogic::newColor(std::string c)
 
 Object_1D *BusinessLogic::getObj1D(int index)
 {
-    Object_1D* o;
+    Object_1D* o = 0;
     std::vector<Object_1D*>::iterator it = monodimensionale.begin();
     bool trovato = false;
     for(int x=0; it < monodimensionale.end() && !trovato ; x++, it++)
@@ -72,7 +72,7 @@ Object_1D *BusinessLogic::getObj1D(int index)
 
 Object_2D *BusinessLogic::getObj2D(int index)
 {
-    Object_2D* o;
+    Object_2D* o = 0;
     std::vector<Object_2D*>::iterator it = bidimensionale.begin();
     bool trovato = false;
     for(int x=0; it < bidimensionale.end() && !trovato; x++, it++)
@@ -85,7 +85,7 @@ Object_2D *BusinessLogic::getObj2D(int index)
 
 Object_3D *BusinessLogic::getObj3D(int index)
 {
-    Object_3D* o;
+    Object_3D* o = 0;
     std::vector<Object_3D*>::iterator it = tridimensionale.begin();
     bool trovato = false;
     for(int x=0; it < tridimensionale.end() && !trovato; x++, it++)
@@ -98,7 +98,7 @@ Object_3D *BusinessLogic::getObj3D(int index)
 
 RGBHex *BusinessLogic::getRGBHex(int index)
 {
-    RGBHex* o;
+    RGBHex* o = 0;
     std::vector<RGBHex*>::iterator it = colori.begin();
     bool trovato = false;
     for(int x=0; it < colori.end() && !trovato; x++, it++)
